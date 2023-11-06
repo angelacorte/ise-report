@@ -1,3 +1,10 @@
+## 1.0.0 (2023-11-06)
+
+
+### Documentation
+
+* create docs structure ([f5b7413](https://github.com/angelacorte/ise-report/commit/f5b7413e7f4b171ae321db6dcfa064315610a46e))
+
 ## [0.2.0](https://github.com/FilippoVissani/latex-template/compare/0.1.2+2023-03-14-16-45...0.2.0) (2023-04-04)
 
 
