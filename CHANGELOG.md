@@ -1,3 +1,15 @@
+## [1.0.2](https://github.com/angelacorte/ise-report/compare/1.0.1...1.0.2) (2023-12-01)
+
+
+### Bug Fixes
+
+* remove section ([67a0007](https://github.com/angelacorte/ise-report/commit/67a000739d13e9a2143109c32c5a5df76d262623))
+
+
+### Documentation
+
+* merge sections ([af5b31f](https://github.com/angelacorte/ise-report/commit/af5b31f32739367979673fdd88bd8ddf30a9860b))
+
 ## [1.0.1](https://github.com/angelacorte/ise-report/compare/1.0.0...1.0.1) (2023-12-01)
 
 
