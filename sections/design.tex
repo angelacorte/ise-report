@@ -1,19 +1,45 @@
 \section{Design}
 
-This is where the logical / abstract contribution of the project is presented.
+%This is where the logical / abstract contribution of the project is presented.
 
-Notice that, when describing a software project, three dimensions need to be taken into account: structure, behaviour, and interaction.
+%Notice that, when describing a software project, three dimensions need to be taken into account: structure, behaviour, and interaction.
 
-Always remember to report \textbf{why} a particular design has been chosen.
-Reporting wrong design choices which has been evalued during the design phase is welcome too.
+%Always remember to report \textbf{why} a particular design has been chosen.
+%Reporting wrong design choices which has been evalued during the design phase is welcome too.
 
 \subsection{Structure}
 
-Which entities need to by modelled to solve the problem?
+È stato deciso di adottare una struttura tale da dividere le funzionalità del broker da quelle del client.
+
+\subsubsection{Client}
+
+L'applicativo del client si occupa di gestire la comunicazione attraverso WebSocket utilizzando il framework Ktor in Kotlin. \\
+
+Per affrontare la natura distribuita del progetto, il sistema è strutturato attorno a entità chiave: Client,
+ WebSocketSession e i modelli di dati per la comunicazione (SerializableSendMessage e SerializableBroadcastMessage). \\
+ 
+ L'interfaccia Client funge da punto principale di accesso, incapsulando le funzionalità necessarie per la comunicazione. \\
+ 
+ La classe WebSocketsClient è un componente chiave che gestisce le connessioni WebSocket. \\
+ 
+ I modelli di dati per la comunicazione rappresentano i messaggi scambiati tra il client e il server. \\
+
+Vengono implementate tre funzionalità principali:
+\begin{itemize}
+    \item \texttt{publish}: si occcupa di inviare un messaggio ad un determinato 'topic' attraverso una connessione WebSocket;
+    \item \texttt{broadcast}: simile alla funzione sopra citata ma è destinata ad unviare un messaggio a tutti i client connessi;
+    \item \texttt{subscribe}: gestisce l'iscrizione del client ad un particolare 'topic' attraverso una connessione WebSocket.
+\end{itemize}
+
+Per quanto riguarda la gestione dei messaggi in arrivo, la funzione \texttt{subscribe} rimane in ascolto dei messaggi in arrivo sulla sessione WebSocket
+associata al 'topic', i messaggi ricevuti vengono dunque deserializzati e memorizzati.
+
+
+%Which entities need to by modelled to solve the problem? 
 %
 (UML Class diagram)
 
-How should entities be modularised?
+%How should entities be modularised?
 %
 (UML Component / Package / Deployment Diagrams)
 
