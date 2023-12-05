@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/angelacorte/ise-report/compare/1.0.4...1.0.5) (2023-12-05)
+
+
+### Documentation
+
+* add subsection "JaKtA" ([f10489f](https://github.com/angelacorte/ise-report/commit/f10489f9acf5254258ef37073516c96e7eed8821))
+
 ## [1.0.4](https://github.com/angelacorte/ise-report/compare/1.0.3...1.0.4) (2023-12-05)
 
 
