@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/angelacorte/ise-report/compare/1.0.6...1.0.7) (2023-12-05)
+
+
+### Documentation
+
+* add paragraph in "Middleware per la Comunicazione tra Agenti Distribuiti" ([b8d12f5](https://github.com/angelacorte/ise-report/commit/b8d12f5ab938ef62c05e79be43f749e0185fc197))
+
 ## [1.0.6](https://github.com/angelacorte/ise-report/compare/1.0.5...1.0.6) (2023-12-05)
 
 
