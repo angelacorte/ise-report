@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/angelacorte/ise-report/compare/1.0.3...1.0.4) (2023-12-05)
+
+
+### Documentation
+
+* add draft in "Introduzione" ([35cbb1f](https://github.com/angelacorte/ise-report/commit/35cbb1fe56ca3c36c12a11b70648aedd4fb60793))
+
 ## [1.0.3](https://github.com/angelacorte/ise-report/compare/1.0.2...1.0.3) (2023-12-02)
 
 
