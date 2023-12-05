@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/angelacorte/ise-report/compare/1.0.5...1.0.6) (2023-12-05)
+
+
+### Documentation
+
+* change title ([a2a3183](https://github.com/angelacorte/ise-report/commit/a2a318315fbeab6caf18dba4bc503aafc75626f2))
+
 ## [1.0.5](https://github.com/angelacorte/ise-report/compare/1.0.4...1.0.5) (2023-12-05)
 
 
