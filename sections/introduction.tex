@@ -19,7 +19,36 @@ Il framework BDI (Belief-Desire-Intention) è ampiamente accettato come uno dei 
 \end{itemize}
 
 \subsection{JaKtA}
-Panoramica di JaKtA e del suo funzionamento.
+JaKtA è una libreria che fornisce la possibilità di sviluppare agenti che percepiscono e agiscono all'interno di un ambiente condiviso e comunicano tra di loro attraverso una forma di comunicazione basata su messaggi.
 
-\subsection{The Necessity of a Distributed Middleware}
+La libreria offre un framework per costruire sistemi Multi-Agente composti da agenti conformi al modello BDI e ispirati all'implementazione di Jason. Un Sistema Multi-Agente è composto da due entità fondamentali:
+
+\begin{itemize}
+    \item \textbf{Agenti}: l'agente è l'entità principale della libreria.
+    \item \textbf{Ambiente}: l'ambiente in cui gli agenti vivono.
+\end{itemize}
+
+Gli agenti del MAS osservano lo stato dell'ambiente durante la loro esecuzione e scelgono autonomamente di agire, in base alle informazioni che percepiscono. Le loro azioni possono influenzare lo stato dell'ambiente, e il cambiamento sarà percepito da tutti gli altri agenti che operano su di esso. Gli agenti sono dotati di obiettivi che sono impegnati a raggiungere, contribuendo così al raggiungimento dell'obiettivo completo del Sistema Multi-Agente. Per quanto riguarda l'ambiente, un utente può:
+
+\begin{itemize}
+    \item Creare un ambiente
+    \item Aggiungere funzionalità all'ambiente, come:
+    \begin{itemize}
+        \item Definire le azioni che gli agenti all'interno dell'ambiente possono utilizzare.
+        \item Definire lo stato dell'ambiente, come l'insieme di informazioni che gli agenti possono percepire e eventualmente modificare.
+    \end{itemize}
+    \item Aggiungere e rimuovere agenti dall'ambiente
+\end{itemize}
+
+Inoltre, gli agenti situati nello stesso ambiente possono comunicare tra di loro attraverso messaggi. I messaggi consentono agli agenti di condividere informazioni sul loro stato o condividere il completamento di un obiettivo, rendendo così il sistema Multi-Agente una vera società di agenti. Per quanto riguarda gli agenti, un utente può:
+
+\begin{itemize}
+    \item Crearli e personalizzarne il comportamento, seguendo il modello BDI.
+    \item Aggiungere azioni relative ad un agente.
+    \item Personalizzare il comportamento degli agenti durante la loro esecuzione.
+\end{itemize}
+
+La libreria consente agli utenti di definire come verranno eseguiti i loro agenti BDI. Ciò significa che gli stessi agenti possono essere eseguiti sia in un singolo thread che tra più di essi, in modo quasi completamente trasparente. Per abilitare il MAS a farlo, gli utenti devono definire il suo modello di esecuzione, ovvero come vengono eseguiti i suoi agenti.
+
+\subsection{Middleware per la Comunicazione tra Agenti Distribuiti}
 presentare la necessità di poter far comunicare i MAS in un contesto distribuito e elencare alcuni casi d'uso.
