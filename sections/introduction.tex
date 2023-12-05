@@ -21,7 +21,7 @@ Il framework BDI (Belief-Desire-Intention) è ampiamente accettato come uno dei 
 \subsection{JaKtA}
 JaKtA è una libreria che fornisce la possibilità di sviluppare agenti che percepiscono e agiscono all'interno di un ambiente condiviso e comunicano tra di loro attraverso una forma di comunicazione basata su messaggi.
 
-La libreria offre un framework per costruire sistemi Multi-Agente composti da agenti conformi al modello BDI e ispirati all'implementazione di Jason. Un Sistema Multi-Agente è composto da due entità fondamentali:
+La libreria offre un framework per costruire Sistemi Multi-Agente composti da agenti conformi al modello BDI e ispirati all'implementazione di Jason. Un Sistema Multi-Agente è composto da due entità fondamentali:
 
 \begin{itemize}
     \item \textbf{Agenti}: l'agente è l'entità principale della libreria.
@@ -50,4 +50,12 @@ Inoltre, gli agenti situati nello stesso ambiente possono comunicare tra di loro
 
 La libreria consente agli utenti di definire come verranno eseguiti i loro agenti BDI. Ciò significa che gli stessi agenti possono essere eseguiti sia in un singolo thread che tra più di essi, in modo quasi completamente trasparente. Per abilitare il MAS a farlo, gli utenti devono definire il suo modello di esecuzione, ovvero come vengono eseguiti i suoi agenti.
 
-\subsection{Middleware per la Comunicazione tra MAS Distribuiti}
+\subsection{Middleware per la Comunicazione tra Agenti Distribuiti}
+
+L'implementazione attuale di JaKtA si concentra sulla gestione dei Sistemi Multi-Agente in locale, limitando la considerazione degli agenti distribuiti in rete. Per affrontare questa limitazione e consentire una comunicazione efficace tra agenti distribuiti, si propone l'introduzione di un middleware dedicato.
+
+Un middleware per la comunicazione tra agenti distribuiti agirebbe come un livello intermedio tra gli agenti stessi e la rete, fornendo un'astrazione che rende trasparenti al programmatore le complessità della comunicazione distribuita. Questo middleware si occuperebbe di gestire l'invio e la ricezione di messaggi tra agenti situati su macchine diverse, garantendo la coerenza delle informazioni.
+
+Il middleware si occuperebbe di stabilire e mantenere le connessioni tra gli agenti distribuiti. Questo includerebbe la gestione dei protocolli di comunicazione, delle connessioni perse e di eventuali ritardi o errori di trasmissione.
+
+L'implementazione di un middleware per la comunicazione tra agenti distribuiti arricchirebbe la capacità di JaKtA di supportare scenari in cui gli agenti operano su reti eterogenee o geograficamente distanti. Ciò consentirebbe la creazione di Sistemi Multi-Agente che possono collaborare e coordinare le loro azioni su scala più ampia, aprendo nuove possibilità di applicazione per la libreria JaKtA.
