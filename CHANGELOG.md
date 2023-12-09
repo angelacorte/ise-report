@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/angelacorte/ise-report/compare/1.0.7...1.0.8) (2023-12-09)
+
+
+### Documentation
+
+* update design ([a1d28c3](https://github.com/angelacorte/ise-report/commit/a1d28c343bf904ffbbd2bdeb82c6a03e316f74bd))
+
 ## [1.0.7](https://github.com/angelacorte/ise-report/compare/1.0.6...1.0.7) (2023-12-05)
 
 
