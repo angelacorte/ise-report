@@ -1,0 +1,10 @@
+@startuml
+component "jakta-bdi" as JB
+component "jakta-dsl" as JD
+
+package jakta-distributed as JDD {
+    component "client" as CL
+    component "broker" as BR
+    component "adapter" as AD
+}
+@enduml
