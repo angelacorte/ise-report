@@ -1,3 +1,20 @@
+## [1.1.0](https://github.com/angelacorte/ise-report/compare/1.0.8...1.1.0) (2023-12-11)
+
+
+### Features
+
+* add architecture diagram ([f6ddb64](https://github.com/angelacorte/ise-report/commit/f6ddb64eefbe22c9c4a48fbcd96430f56fc5b583))
+
+
+### General maintenance
+
+* remove useless files ([567d5a9](https://github.com/angelacorte/ise-report/commit/567d5a925da0d08c33101c56dfea032431d23238))
+
+
+### Refactoring
+
+* update architectural design doc ([de8cbf7](https://github.com/angelacorte/ise-report/commit/de8cbf77ccf382026fc54633c426b357f1e109c5))
+
 ## [1.0.8](https://github.com/angelacorte/ise-report/compare/1.0.7...1.0.8) (2023-12-09)
 
 
