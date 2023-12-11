@@ -1,3 +1,15 @@
+## [1.1.1](https://github.com/angelacorte/ise-report/compare/1.1.0...1.1.1) (2023-12-11)
+
+
+### Documentation
+
+* add detailed design ([5af1d04](https://github.com/angelacorte/ise-report/commit/5af1d048f08a45f12b82a9603f4bb050064db268))
+
+
+### General maintenance
+
+* move client implementation details ([86d46fe](https://github.com/angelacorte/ise-report/commit/86d46fe49c8afa5bfed00ba41f9bb4b81099a8b7))
+
 ## [1.1.0](https://github.com/angelacorte/ise-report/compare/1.0.8...1.1.0) (2023-12-11)
 
 
