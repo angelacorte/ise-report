@@ -1,7 +1,29 @@
 \section{Implementation Details}
 
-Just report interesting / non-trivial / non-obvious implementation details.
+\subsection{Client}
+L'applicativo del client è progettato per gestire la comunicazione attraverso WebSocket,
+facendo uso del framework Ktor in Kotlin. Per affrontare la natura distribuita del progetto,
+sono state definite entità chiave, tra cui \textit{Client}, \textit{WebSocketSession}, e i modelli di dati
+\textit{SerializableSendMessage} e \textit{SerializableBroadcastMessage}. \\
 
-This section is expected to be short in case some documentation (e.g. Javadoc or Swagger Spec) has been produced for the software artefacts.
-%
-This this case, the produced documentation should be referenced here.
+L'interfaccia Client svolge il ruolo di punto principale di accesso, incapsulando le funzionalità fondamentali per la
+comunicazione. La sua implementazione chiave è rappresentata dalla classe \textit{WebSocketsClient}.\\
+
+La classe WebSocketsClient è una componente centrale per gestire le connessioni WebSocket.
+È responsabile della creazione e gestione di sessioni WebSocket per la pubblicazione,
+la sottoscrizione e la trasmissione di messaggi. Inoltre, tiene traccia delle connessioni attive, delle disconnessioni e dei messaggi in arrivo.\\
+
+I modelli \textit{SerializableSendMessage} e \textit{SerializableBroadcastMessage} sono essenziali per rappresentare i messaggi scambiati tra il client e
+il server. La loro struttura è progettata per garantire una corretta serializzazione e deserializzazione dei dati. \\
+
+Vengono implementate tre funzionalità principali:
+\begin{itemize}
+    \item \texttt{publish}: si occcupa di inviare un messaggio ad un determinato 'topic' attraverso una connessione WebSocket;
+    \item \texttt{broadcast}: simile alla funzione sopra citata ma è destinata ad unviare un messaggio a tutti i client connessi;
+    \item \texttt{subscribe}: gestisce l'iscrizione del client ad un particolare 'topic' attraverso una connessione WebSocket.
+\end{itemize}
+
+Per quanto riguarda la gestione dei messaggi in arrivo, la funzione \texttt{subscribe}.
+Questa funzione rimane in ascolto dei messaggi inviati al 'topic' specificato, deserializza i messaggi ricevuti e li memorizza per un successivo utilizzo.
+Questo meccanismo è fondamentale per garantire una comunicazione bidirezionale efficace tra il client e il server.
+
