@@ -1,12 +1,4 @@
 \section{Design}
-
-%This is where the logical / abstract contribution of the project is presented.
-
-%Notice that, when describing a software project, three dimensions need to be taken into account: structure, behaviour, and interaction.
-
-%Always remember to report \textbf{why} a particular design has been chosen.
-%Reporting wrong design choices which has been evalued during the design phase is welcome too.
-
 In questa sezione esporremo il design del progetto, partendo dalle decisioni prese in ambito architetturale e proseguendo
 col design di dettaglio.
 
@@ -15,7 +7,7 @@ Come precedentemente illustrato nei capitoli precedenti, il progetto si propone 
 Il gruppo ha deciso di raggiungere questo obiettivo fornendo un'estensione del framework e del suo Domain Specific Language il più minimale possibile.
 Dal punto di vista architetturale, il progetto si colloca come modulo a sé stante, come mostrato nella figura \ref{fig:architecture}:
 
-\begin{figure}[ht]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/general-architecture.png}
     \caption{Architettura del progetto}
@@ -24,20 +16,23 @@ Dal punto di vista architetturale, il progetto si colloca come modulo a sé stan
 
 In particolare, il modulo sviluppato è formato da tre componenti principali, come mostrato nella figura \ref{fig:detailed-architecture}:
 
-\begin{figure}[ht]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/detailed-architecture.png}
     \caption{Architettura del modulo sviluppato}
     \label{fig:detailed-architecture}
 \end{figure}
 
-Come anticipato in precedenza, il progetto presenta anche un'estensione del Domain Specific Language di JaKTa, che permette di definire un sistema multi-agente con capacità di comunicare con l'esterno.
+Dei moduli rappresentati in figura \ref{fig:detailed-architecture}, il modulo \textit{Adapter} è quello che definisce e contiene tutti i concetti da implementare per realizzare l'obiettivo di progetto,
+mentre i moduli \textit{Client} e \textit{Broker} forniscono una prima implementazione della logica di comunicazione tra i sistemi multi-agente distribuiti.\\
 
-\begin{figure}[ht]
+Come anticipato in precedenza, il progetto presenta anche un'estensione del Domain Specific Language di JaKTa, la cui struttura è rappresentata nella figura \ref{fig:dsl-architecture}.
+
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/dsl-architecture.png}
     \caption{Architettura del Domain Specific Language}
-    \label{fig:dmas-architecture}
+    \label{fig:dsl-architecture}
 \end{figure}
 
 \begin{figure}
@@ -49,13 +44,27 @@ Come anticipato in precedenza, il progetto presenta anche un'estensione del Doma
 
 \subsection{Design di dettaglio}
 La soluzione proposta consiste nell'implementazione di una versione alternativa dell'interfaccia \textit{Mas}, chiamata \textit{Dmas}, da utilizzare in contesti distribuiti.
-Questa estensione dovrà comportarsi come un Mas, ma in aggiunta dovrà essere in grado di comunicare con altri Dmas attraverso la rete utilizzando un protocollo di comunicazione.
-
-Come si può notare dalla figura \ref{fig:architecture}, il progetto è composto da tre componenti principali:
+Questa estensione dovrà comportarsi come un Mas, ma in aggiunta dovrà essere in grado di comunicare con altri Dmas attraverso la rete.
 
 \subsubsection{Adapter}
+Questo modulo si occupa di definire i concetti di:
+\begin{itemize}
+    \item \textbf{Dmas}: rappresenta un sistema multi-agente distribuito, cioè che può comunicare con altri sistemi Dmas attraverso la rete.
+    \item \textbf{Network}: incapsula la logica di comunicazione tra Dmas attraverso la rete.
+    \item \textbf{RemoteService}: rappresenta un agente remoto, cioè un agente che appartiene ad un Dmas diverso da quello corrente, ma contattabile attraverso la rete.
+\end{itemize}
+
+Le relazioni tra questi concetti sono esemplificate dal diagramma delle classi in figura \ref{fig:class-dmas}.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/class-dmas.png}
+    \caption{Diagramma delle classi del modulo Adapter}
+    \label{fig:class-dmas}
+\end{figure}
 
 \subsubsection{Client}
+Questo modulo ha lo scopo di fornire una prima implementazione del modello di comunicazione scelto per il progetto, dal punto di vista del Dmas.
 
 \begin{figure}
     \centering
@@ -72,7 +81,28 @@ Come si può notare dalla figura \ref{fig:architecture}, il progetto è composto
 descrizione del main loop del DMas
 
 \subsection{Interaction}
+Il modello di interazione tra i vari Dmas collegati alla rete è di tipo publish-subscribe: ogni Dmas, che assume il ruolo di client, può sottoscrivere ad uno o più topic, e può pubblicare messaggi su uno o più topic.
+I messaggi pubblicati su un topic vengono ricevuti da tutti i client che si sono sottoscritti a quel topic.
+Il broker, che assume il ruolo di server, si occupa di gestire la comunicazione tra i client, in particolare si occupa di:
+\begin{itemize}
+    \item ricevere i messaggi pubblicati dai client;
+    \item inviare i messaggi ai client sottoscritti ai topic corrispondenti;
+    \item gestire le connessioni e le disconnessioni dei client.
+    \item gestire la sottoscrizione dei client ai vari topic.
+\end{itemize}
 
-interazione tra vari DMas
+Il comportamento di clients e broker in situazioni di broadcast e invio di messaggi con singolo destinatario è illustrato nelle figure \ref{fig:interaction-broadcast} e \ref{fig:interaction-sendmessage}.
 
-interazione tra DMas, client e broker
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/interaction-broadcast.png}
+    \caption{Interazione tra DMas, client e broker in caso di broadcast}
+    \label{fig:interaction-broadcast}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/interaction-sendmessage.png}
+    \caption{Interazione tra DMas, client e broker in caso di invio di messaggio con singolo destinatario}
+    \label{fig:interaction-sendmessage}
+\end{figure}
