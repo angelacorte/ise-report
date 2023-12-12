@@ -1,0 +1,34 @@
+@startuml
+
+package it.unibo.jakta.agents.distributed.broker {
+    package model {
+        interface Cache<T> {
+            register(data: T, topic: Topic)
+            free(topic: Topic)
+            read(topic: Topic): T
+        }
+        interface SubscriptionManager<T> {
+            addPublisher(publisher: T, topic: Topic)
+            removePublisher(publisher: T, topic: Topic)
+            availableTopics(): Set<Topic>
+            addSubscriber(subscriber: T, topic: Topic)
+            removeSubscriber(subscriber: T, topic: Topic)
+            subscribers(topic: Topic): Set<T>
+        }
+    }
+
+    package plugins {
+        class Routing
+        class Websockets
+    }
+
+    class Application
+}
+
+Application ..> Websockets
+Application ..> Routing
+Routing ..> SubscriptionManager
+Websockets ..> SubscriptionManager
+Websockets ..> Cache
+
+@enduml

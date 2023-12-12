@@ -1,0 +1,20 @@
+@startuml
+
+component DMAS
+component Broker
+interface "/subscribe/{topic}" as subscribe
+interface "/publish/{topic}" as publish
+interface "/topics" as topics
+interface "/subscribe-all/{except...}" as subscribeAll
+
+Broker -up- subscribe
+Broker -up- publish
+Broker -up- subscribeAll
+Broker -up- topics
+
+DMAS ..> subscribe
+DMAS ..> publish
+DMAS ..> subscribeAll
+DMAS ..> topics
+
+@enduml
