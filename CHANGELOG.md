@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/angelacorte/ise-report/compare/1.3.1...1.3.2) (2023-12-12)
+
+
+### Documentation
+
+* improve section "Introduzione" ([5bcfe2d](https://github.com/angelacorte/ise-report/commit/5bcfe2d432a679aeb79305ec3cd700063713bf96))
+
 ## [1.3.1](https://github.com/angelacorte/ise-report/compare/1.3.0...1.3.1) (2023-12-12)
 
 
