@@ -1,0 +1,41 @@
+@startuml
+ 
+participant Mas1 as M1
+
+participant Mas2 as M2
+
+participant Mas3 as M3
+
+participant Broker as CB
+ 
+activate M1
+
+activate M2
+
+activate M3
+
+activate CB
+ 
+== Subscription ==
+ 
+M2 --> CB : subscribe(Mas1.service1)
+
+M3 --> CB : subscribe(Mas1.service1)
+ 
+== Messaging ==
+ 
+M1 --> CB : Boadcast(message)
+
+CB --> M2 : Send(message)
+
+CB --> M3 : Send(message)
+ 
+deactivate M1
+
+deactivate M2
+
+deactivate M3
+
+deactivate CB
+ 
+@enduml
