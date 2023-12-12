@@ -1,4 +1,4 @@
-\section{Requirements Analysis}
+\section{Analisi dei Requisiti}
 
 % Is there any implicit requirement hidden within this project's requirements?
 %
@@ -10,52 +10,50 @@
 %
 % What's the abstraction gap among the available models / paradigms / technologies and the problem to be solved?
 
-\subsection{Goals}
+\subsection{Goal}
 
 Il goal principale del progetto è quello di estendere la libreria JaKtA e il relativo framework per la costruzione di Sistemi Multi-Agenti,
 con la creazione di un middleware per l'interazione tra sistemi multi-agente distribuiti.
 
-\subsection{Requirements}
-A partire dal goal principale del progetto, sono stati individuati diversi requisiti funzionali e non funzionali.
-
-\subsubsection{Requisiti funzionali}
+\subsection{Requisiti}
+A partire dal goal principale del progetto, sono stati individuati diversi requisiti funzionali:
 
 \begin{enumerate}
-    \item Gestione della distribuzione degli agenti:
-          \begin{enumerate}
-              \item  Il middleware deve supportare la distribuzione degli agenti su macchine eterogenee,
-                    consentendo la loro esecuzione coordinata su diverse posizioni geografiche.
-              \item Deve agevolare la registrazione dinamica degli agenti distribuiti e la
-                    loro integrazione nell'ambiente di esecuzione.
-          \end{enumerate}
+      \item Gestione della distribuzione degli agenti:
+            \begin{enumerate}
+                  \item  Il middleware deve supportare la distribuzione degli agenti su macchine eterogenee,
+                        consentendo la loro esecuzione coordinata su diverse posizioni geografiche.
+                  \item Deve agevolare la registrazione dinamica degli agenti distribuiti e la
+                        loro integrazione nell'ambiente di esecuzione.
+            \end{enumerate}
 
-    \item Implementazione di un meccanismo di dispatch dei messaggi tra i vari agenti:
-          \begin{enumerate}
-              \item Il middleware deve essere composto da un broker:
-                    \begin{enumerate}
-                        \item Il broker deve consentire l'aggiunta di publishers associati a un determinato topic.
-                        \item Il broker deve permettere la rimozione di publishers associati a un topic specifico.
-                        \item Il broker deve supportare l'aggiunta di subscribers associati a un determinato topic.
-                        \item Il broker deve permettere la rimozione di subscribers associati a un topic specifico.
-                        \item Il broker deve fornire l'elenco di tutti i topic disponibili.
-                        \item Il sistema deve utilizzare strutture dati sincronizzate per gestire in modo sicuro e concorrente l'associazione di publishers e subscribers ai topic.
-                    \end{enumerate}
-              \item Il middleware deve essere composto da un client:
-                    \begin{enumerate}
-                        \item Il client deve fornire la funzionalità di pubblicare un messaggio su un determinato topic.
-                        \item Il client deve offrire la possibilità di sottoscriversi a un topic specifico.
-                        \item Il sistema deve consentire al client di effettuare una trasmissione broadcast, inviando un messaggio a tutti i client connessi.
-                        \item  Il client deve essere in grado di stabilire e gestire connessioni WebSocket verso un server specificato tramite host e porta.
-                    \end{enumerate}
-          \end{enumerate}
+      \item Implementazione di un meccanismo di dispatch dei messaggi tra i vari agenti:
+            \begin{enumerate}
+                  \item Il middleware deve essere composto da un broker:
+                        \begin{enumerate}
+                              \item Il broker deve consentire l'aggiunta di publisher associati a un determinato topic.
+                              \item Il broker deve permettere la rimozione di publisher associati a un topic specifico.
+                              \item Il broker deve supportare l'aggiunta di subscriber associati a un determinato topic.
+                              \item Il broker deve permettere la rimozione di subscriber associati a un topic specifico.
+                              \item Il broker deve fornire l'elenco di tutti i topic disponibili.
+                              \item Il sistema deve utilizzare strutture dati sincronizzate per gestire in modo sicuro e concorrente l'associazione di publishers e subscribers ai topic.
+                        \end{enumerate}
+                  \item Il middleware deve essere composto da un client:
+                        \begin{enumerate}
+                              \item Il client deve fornire la funzionalità di pubblicare un messaggio su un determinato topic.
+                              \item Il client deve offrire la possibilità di sottoscriversi a un topic specifico.
+                              \item Il sistema deve consentire al client di effettuare una trasmissione broadcast, inviando un messaggio a tutti i client connessi.
+                              \item  Il client deve essere in grado di stabilire e gestire connessioni WebSocket verso un server specificato tramite host e porta.
+                        \end{enumerate}
+            \end{enumerate}
 
-    \item  Comunicazione Distribuita e Coordinazione
-          \begin{enumerate}
-              \item  Il middleware deve gestire la comunicazione distribuita tra agenti, facilitando
-                    lo scambio di messaggi e la coordinazione delle attività.
-              \item Deve supportare la sincronizzazione degli agenti distribuiti per garantire
-                    un'interazione coesa e coordinata.
-          \end{enumerate}
+      \item  Comunicazione Distribuita e Coordinazione
+            \begin{enumerate}
+                  \item  Il middleware deve gestire la comunicazione distribuita tra agenti, facilitando
+                        lo scambio di messaggi e la coordinazione delle attività.
+                  \item Deve supportare la sincronizzazione degli agenti distribuiti per garantire
+                        un'interazione coesa e coordinata.
+            \end{enumerate}
 \end{enumerate}
 
 % \subsubsection{Requisiti non funzionali}
