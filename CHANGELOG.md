@@ -1,3 +1,15 @@
+## [1.2.0](https://github.com/angelacorte/ise-report/compare/1.1.1...1.2.0) (2023-12-12)
+
+
+### Features
+
+* add broadcast and sendmessage diagrams ([9e489b9](https://github.com/angelacorte/ise-report/commit/9e489b9aa73ba082d66f9cb1c594392f1605c8ff))
+
+
+### General maintenance
+
+* remove useless file ([d96d5a8](https://github.com/angelacorte/ise-report/commit/d96d5a88e6534ef32cdf2c7ffcfeafb5f0712049))
+
 ## [1.1.1](https://github.com/angelacorte/ise-report/compare/1.1.0...1.1.1) (2023-12-11)
 
 
