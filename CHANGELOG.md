@@ -1,3 +1,11 @@
+## [1.4.0](https://github.com/angelacorte/ise-report/compare/1.3.4...1.4.0) (2023-12-12)
+
+
+### Features
+
+* add class diagram of dmas ([9e4af94](https://github.com/angelacorte/ise-report/commit/9e4af94741c671055c7081a8a7d691ae97ee04b8))
+* add detailed design and interaction ([f543d14](https://github.com/angelacorte/ise-report/commit/f543d148065d1e16651cbe6653d1581d48bd0927))
+
 ## [1.3.4](https://github.com/angelacorte/ise-report/compare/1.3.3...1.3.4) (2023-12-12)
 
 
