@@ -35,6 +35,16 @@ Come anticipato in precedenza, il progetto presenta anche un'estensione del Doma
     \label{fig:dsl-architecture}
 \end{figure}
 
+Il diagramma dei componenti presentato in Figura \ref{fig:network-architecture} offre una panoramica dell'architettura di rete.
+Il \textit{Broker} espone quattro interfacce: le interfacce \texttt{/subscribe/{topic}} e \texttt{/publish/{topic}} consentono rispettivamente la sottoscrizione e la pubblicazione su \textit{topic} specifici, mentre l'interfaccia \texttt{/topics} fornisce un mezzo per recuperare l'elenco dei \textit{topic} disponibili. Inoltre, l'interfaccia \texttt{/subscribe-all/\{except...\}} offre la possibilità di sottoscrivere tutti i \textit{topic} tranne quelli specificati. Il \textit{Dmas}, d'altra parte, si connette al \textit{Broker} attraverso queste interfacce, sfruttandole per sottoscrivere, pubblicare e ottenere informazioni dagli altri \textit{Dmas}. Questo setup permette la gestione delle comunicazioni distribuite, con il \textit{Broker} che funge da fulcro centrale per agevolare la sottoscrizione, la pubblicazione e la gestione dei \textit{topic} all'interno del sistema.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/network-architecture.png}
+    \caption{Architettura di rete}
+    \label{fig:network-architecture}
+\end{figure}
+
 \subsection{Design di dettaglio}
 La soluzione proposta consiste nell'implementazione di una versione alternativa dell'interfaccia \textit{Mas}, chiamata \textit{Dmas}, da utilizzare in contesti distribuiti.
 Questa estensione dovrà comportarsi come un Mas, ma in aggiunta dovrà essere in grado di comunicare con altri Dmas attraverso la rete.
@@ -61,6 +71,14 @@ Questo modulo ha lo scopo di fornire una prima implementazione del modello di co
 
 \subsubsection{Broker}
 
+Il diagramma delle classi del broker (Figura \ref{fig:broker-class-diagram}) presenta una struttura organizzata e modulare. Nel package \texttt{model}, sono definite due interfacce chiave: \texttt{Cache<T>} per la registrazione, la liberazione e la lettura di dati associati a un \textit{topic}, e \texttt{SubscriptionManager<T>} per gestire la sottoscrizione, l'aggiunta e la rimozione di \textit{publisher} e \textit{subscriber}, nonché l'ottenimento dei \textit{topic} disponibili e dei \textit{subscriber} associati a un \textit{topic}. Il package \texttt{plugins} include le classi \texttt{Routing} e \texttt{Websockets}, che vengono utilizzate per la definizione delle \textit{API Web}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/broker-class-diagram.png}
+    \caption{Diagramma delle classi del \textit{Broker}}
+    \label{fig:broker-class-diagram}
+\end{figure}
 
 \subsection{Behaviour}
 Il comportamento delle varie componenti del sistema può essere descritto attraverso i seguenti passaggi:
