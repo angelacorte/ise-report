@@ -1,0 +1,17 @@
+@startuml
+start
+
+while (External event received)
+    :Network registers the received event;
+endwhile
+
+while (EnvironmentChange exists in queue)
+    :Concatenate external events to internal EnvironmentChange queue of Dmas;
+    :Process EnvironmentChange in Dmas;
+    if (Event involves sending a message)
+        :Send message to Network for forwarding to broker;
+    endif
+endwhile
+
+stop
+@enduml

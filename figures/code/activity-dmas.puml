@@ -1,0 +1,16 @@
+@startuml
+start
+
+:Instantiate Network;
+:Connect to broker;
+:Define RemoteServices of interest;
+:Instantiate Dmas;
+
+while (RemoteService exists)
+    :Dmas subscribes to topics of interest;
+endwhile
+
+:Execute dispatch of ExecutionStrategy for Dmas;
+
+stop
+@enduml

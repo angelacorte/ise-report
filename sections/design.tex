@@ -35,13 +35,6 @@ Come anticipato in precedenza, il progetto presenta anche un'estensione del Doma
     \label{fig:dsl-architecture}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/network-architecture.png}
-    \caption{Architettura di rete}
-    \label{fig:network-architecture}
-\end{figure}
-
 \subsection{Design di dettaglio}
 La soluzione proposta consiste nell'implementazione di una versione alternativa dell'interfaccia \textit{Mas}, chiamata \textit{Dmas}, da utilizzare in contesti distribuiti.
 Questa estensione dovrà comportarsi come un Mas, ma in aggiunta dovrà essere in grado di comunicare con altri Dmas attraverso la rete.
@@ -66,19 +59,48 @@ Le relazioni tra questi concetti sono esemplificate dal diagramma delle classi i
 \subsubsection{Client}
 Questo modulo ha lo scopo di fornire una prima implementazione del modello di comunicazione scelto per il progetto, dal punto di vista del Dmas.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/broker-class-diagram.png}
-    \caption{Architettura di rete}
-    \label{fig:broker-class-diagram}
-\end{figure}
-
 \subsubsection{Broker}
 
 
 \subsection{Behaviour}
+Il comportamento delle varie componenti del sistema può essere descritto attraverso i seguenti passaggi:
 
-descrizione del main loop del DMas
+\subsubsection{Inizializzazione del sistema}
+
+\begin{enumerate}
+    \item istanziazione di una Network;
+    \item connessione da parte della Network al broker;
+    \item definizione dei RemoteService di interesse;
+    \item istanziazione di un Dmas;
+    \item per ogni RemoteService, il Dmas si sottoscrive ai topic di interesse;
+    \item esecuzione del dispatch della ExecutionStrategy scelta per il Dmas;
+\end{enumerate}
+
+Queste attività sono illustrate in figura \ref{fig:initialization}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/activity-dmas.png}
+    \caption{Inizializzazione del sistema}
+    \label{fig:initialization}
+\end{figure}
+
+\subsubsection{Ciclo di esecuzione del Dmas}
+
+\begin{enumerate}
+    \item il Dmas raccoglie tutti gli eventi esterni ricevuti dalla Network, ossia i messaggi pubblicati dai RemoteService a cui si è sottoscritto e le eventuali notifiche di disconnessione di un RemoteService, sotto forma di EnvironmentChange;
+    \item gli eventi esterni vengono concatenati alla coda degli EncironmentChange interni del Dmas;
+    \item ad uno ad uno, gli EnvironmentChange vengono processati dal Dmas. Nel caso in cui l'evento consista nell'inviare un messaggio ad un RemoteService o un broadcast, il messaggio viene inviato alla Network, che si occuperà di inoltrarlo al broker;
+\end{enumerate}
+
+Queste attività sono illustrate in figura \ref{fig:execution}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/activity-applychanges.png}
+    \caption{Ciclo di esecuzione del Dmas}
+    \label{fig:execution}
+\end{figure}
 
 \subsection{Interaction}
 Il modello di interazione tra i vari Dmas collegati alla rete è di tipo publish-subscribe: ogni Dmas, che assume il ruolo di client, può sottoscrivere ad uno o più topic, e può pubblicare messaggi su uno o più topic.
