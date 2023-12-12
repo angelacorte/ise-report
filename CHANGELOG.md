@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/angelacorte/ise-report/compare/1.6.0...1.6.1) (2023-12-12)
+
+
+### Documentation
+
+* add paragraphs in "Design" ([8175a76](https://github.com/angelacorte/ise-report/commit/8175a760e6ab625bb4735a59fb603b34597cf1ae))
+
 ## [1.6.0](https://github.com/angelacorte/ise-report/compare/1.5.0...1.6.0) (2023-12-12)
 
 
