@@ -1,3 +1,15 @@
+## [1.3.0](https://github.com/angelacorte/ise-report/compare/1.2.0...1.3.0) (2023-12-12)
+
+
+### Features
+
+* separate architecture in general, detailed and dsl ([bed397d](https://github.com/angelacorte/ise-report/commit/bed397d1f759e5dc52eee541601785061bff807d))
+
+
+### General maintenance
+
+* remove useless files ([cdd875f](https://github.com/angelacorte/ise-report/commit/cdd875f6c360dabddfc1621843efc2c58f760d6c))
+
 ## [1.2.0](https://github.com/angelacorte/ise-report/compare/1.1.1...1.2.0) (2023-12-12)
 
 
