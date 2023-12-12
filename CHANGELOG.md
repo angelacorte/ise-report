@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/angelacorte/ise-report/compare/1.3.0...1.3.1) (2023-12-12)
+
+
+### Documentation
+
+* add email ([b9014c8](https://github.com/angelacorte/ise-report/commit/b9014c8c97a794c399e88f039e0beaed1e0f3e19))
+
 ## [1.3.0](https://github.com/angelacorte/ise-report/compare/1.2.0...1.3.0) (2023-12-12)
 
 
