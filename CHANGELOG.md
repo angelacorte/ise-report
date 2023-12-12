@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/angelacorte/ise-report/compare/1.6.1...1.6.2) (2023-12-12)
+
+
+### Bug Fixes
+
+* fix typos ([b7d360a](https://github.com/angelacorte/ise-report/commit/b7d360ae79a1737bdd7db8e250f621a17fbf41f5))
+
 ## [1.6.1](https://github.com/angelacorte/ise-report/compare/1.6.0...1.6.1) (2023-12-12)
 
 
