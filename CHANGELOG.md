@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/angelacorte/ise-report/compare/1.4.0...1.5.0) (2023-12-12)
+
+
+### Features
+
+* add behaviour ([16e2c5d](https://github.com/angelacorte/ise-report/commit/16e2c5d964e55fa696d487ab202be6f106101c15))
+
 ## [1.4.0](https://github.com/angelacorte/ise-report/compare/1.3.4...1.4.0) (2023-12-12)
 
 
