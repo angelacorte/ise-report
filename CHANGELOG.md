@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/angelacorte/ise-report/compare/1.3.3...1.3.4) (2023-12-12)
+
+
+### Documentation
+
+* add diagrams in design ([8f80ad7](https://github.com/angelacorte/ise-report/commit/8f80ad7e177bffb50b71efc66f67c7491010f609))
+
 ## [1.3.3](https://github.com/angelacorte/ise-report/compare/1.3.2...1.3.3) (2023-12-12)
 
 
