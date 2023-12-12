@@ -11,17 +11,33 @@ In questa sezione esporremo il design del progetto, partendo dalle decisioni pre
 col design di dettaglio.
 
 \subsection{Design architetturale}
+Come precedentemente illustrato nei capitoli precedenti, il progetto si propone di sviluppare un meccanismo per la creazione di sistemi multi-agente distribuiti utilizzando \textit{JaKTa}.
+Il gruppo ha deciso di raggiungere questo obiettivo fornendo un'estensione del framework e del suo Domain Specific Language il più minimale possibile.
+Dal punto di vista architetturale, il progetto si colloca come modulo a sé stante, come mostrato nella figura \ref{fig:architecture}:
 
-Come menzionato nei precedenti capitoli, l'obiettivo del progetto è quello di fornire un meccanismo per realizzare sistemi multi-agente distribuiti in \textit{JaKTa}, ed
-il gruppo ha deciso di conseguirlo fornendo un' estensione del framework il più minimale possibile.
-
-Dal punto di vista architetturale, il progetto si colloca come modulo aggiuntivo del framework \textit{JaKTa}.
-
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/architecture.png}
+    \includegraphics[width=0.8\textwidth]{figures/general-architecture.png}
     \caption{Architettura del progetto}
     \label{fig:architecture}
+\end{figure}
+
+In particolare, il modulo sviluppato è formato da tre componenti principali, come mostrato nella figura \ref{fig:detailed-architecture}:
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/detailed-architecture.png}
+    \caption{Architettura del modulo sviluppato}
+    \label{fig:detailed-architecture}
+\end{figure}
+
+Come anticipato in precedenza, il progetto presenta anche un'estensione del Domain Specific Language di JaKTa, che permette di definire un sistema multi-agente con capacità di comunicare con l'esterno.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/dsl-architecture.png}
+    \caption{Architettura del Domain Specific Language}
+    \label{fig:dmas-architecture}
 \end{figure}
 
 \subsection{Design di dettaglio}

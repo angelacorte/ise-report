@@ -1,0 +1,20 @@
+@startuml
+component "jakta-bdi" as JB
+
+package jakta-distributed as JDD {
+    component "client" as CL
+    component "broker" as BR
+    component "adapter" as AD
+}
+
+() Network as NT
+() Mas as M
+
+CL .right. BR : communicates
+
+AD -down- NT
+CL --> NT
+
+JB -- M
+AD --> M
+@enduml

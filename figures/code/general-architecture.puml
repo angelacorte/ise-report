@@ -1,0 +1,10 @@
+@startuml
+component "jakta-bdi" as JB
+component "jakta-dsl" as JD
+component "jakta-distributed" as JDD
+
+JD ..> JB
+JDD .left.> JB
+JDD ..> JD
+
+@enduml

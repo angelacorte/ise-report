@@ -1,0 +1,14 @@
+@startuml
+component "jakta-dsl" as JDSL
+
+package jakta-distributed as JDD {
+    component dsl
+    component "adapter" as AD
+}
+
+() JaktaDSL as J
+
+JDSL -- J
+dsl ..> AD
+dsl --> J
+@enduml
