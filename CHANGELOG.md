@@ -1,3 +1,20 @@
+## [1.6.0](https://github.com/angelacorte/ise-report/compare/1.5.0...1.6.0) (2023-12-12)
+
+
+### Features
+
+* add setlist for enumeration ([ec136ae](https://github.com/angelacorte/ise-report/commit/ec136aeaefd9cdc67d49313c1b1956b7477f8481))
+
+
+### Documentation
+
+* add requirements ([6e072b5](https://github.com/angelacorte/ise-report/commit/6e072b510e250d0b40094e7713ee2ed1e6118916))
+
+
+### Style improvements
+
+* go to new page after end of section ([966a94b](https://github.com/angelacorte/ise-report/commit/966a94b03d58713c1cafef2ff792e5eb261365df))
+
 ## [1.5.0](https://github.com/angelacorte/ise-report/compare/1.4.0...1.5.0) (2023-12-12)
 
 
