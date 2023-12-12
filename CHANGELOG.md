@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/angelacorte/ise-report/compare/1.3.2...1.3.3) (2023-12-12)
+
+
+### Documentation
+
+* add bibliography ([de8aeed](https://github.com/angelacorte/ise-report/commit/de8aeed69d0a7034642b20ece378e6cc6d7508af))
+
 ## [1.3.2](https://github.com/angelacorte/ise-report/compare/1.3.1...1.3.2) (2023-12-12)
 
 
