@@ -1,0 +1,22 @@
+@startuml
+interface "Mas" as MAS
+
+interface "Network" as NT {
+    + send: Unit
+    + broadcast: Unit
+    + getMessages: Iterable<EnvironmentChange>
+}
+
+class "RemoteService" as RS {
+    name: String
+}
+
+interface "DMas" as DM {
+    network: Network
+    services: Iterable<RemoteService>
+}
+
+DM --|> MAS
+DM -- NT
+DM -- RS
+@enduml
