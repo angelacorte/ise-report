@@ -51,6 +51,22 @@ Endpoint e Routing:
     \item Il modulo \textit{configureRouting} configura le \textit{route HTTP} per ottenere informazioni sui \textit{topic} disponibili.
 \end{itemize}
 
+\subsection{Adapter}
+Per realizzare una versione di sistema multi agente in grado di comunicare con l'esterno, è stata estesa l'interfaccia Mas con l'interfaccia Dmas:
+
+\begin{lstlisting}[language=Kotlin]
+interface Dmas : Mas {
+    val network: Network
+    val remoteServices: List<RemoteService>
+}
+\end{lstlisting}
+
+Un'implementazione del Dmas può dunque essere usata in vece del Mas dalla logica applicativa principale del framework, ma in aggiunta può servirsi di Network e RemoteService per
+implementare la logica di comunicazione con l'esterno.\\
+
+Per quanto riguarda l'implementazione dell'interfaccia Network, che incapsula la logica di comunicazione tra Dmas attraverso la rete, è stata scelta una soluzione basata sull'uso
+di un client WebSocket, che verrà trattato nel dettaglio nel paragrafo successivo.\\
+
 \subsection{Client}
 L'applicativo del client è progettato per gestire la comunicazione attraverso WebSocket,
 facendo uso del framework Ktor in Kotlin. Per affrontare la natura distribuita del progetto,
