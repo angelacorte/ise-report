@@ -1,4 +1,31 @@
-\section{Implementation Details}
+\section{Dettagli Implementativi}
+
+\subsection{Tecnologie Utilizzate}
+
+\subsubsection{Kotlin}
+
+Per lo sviluppo del progetto è stato scelto di utilizzare Kotlin\cite{kotlin} come linguaggio di programmazione, questo perché la base di codice presente in JaKtA è anch'essa scritta in tale linguaggio.
+
+Kotlin è un linguaggio di programmazione moderno, conciso e altamente espressivo, progettato per interoperare completamente con Java\cite{java}.
+Con una sintassi chiara e concisa, gestione avanzata delle nullità, estensioni delle funzioni e il supporto nativo per la programmazione orientata agli oggetti, Kotlin offre un ambiente di sviluppo robusto e flessibile.
+
+\subsubsection{Gradle}
+
+Come \textit{build system} è stato scelto di utilizzare quello già presente in JaKtA, ovvero Gradle\cite{gradle}.
+
+Gradle è un sistema di automazione della compilazione e gestione delle dipendenze. Basato su un modello di configurazione dichiarativa, Gradle semplifica il processo di costruzione e gestione dei progetti, fornendo una sintassi chiara e potente basata su Groovy\cite{groovy} o Kotlin.
+
+\subsubsection{Ktor}
+
+Per la gestione delle comunicazioni di rete tra \textit{Client} e \textit{Broker} è stato scelto di utilizzare la libreria Ktor\cite{ktor}.
+
+Ktor è un \textit{framework} di sviluppo web moderno e leggero scritto in Kotlin, progettato per semplificare la creazione di applicazioni web robuste e performanti. Offre un approccio dichiarativo e conciso per gestire le richieste \textit{HTTP} e costruire servizi web. Il \textit{framework} permette la programmazione asincrona e non bloccante, inoltre ha la capacità di integrarsi senza sforzo con altre tecnologie Kotlin, come le \textit{coroutine}
+
+\subsubsection{Testing}
+
+Per testare il funzionamento dei moduli sviluppati è stato utilizzato il \textit{framework} JUnit\cite{junit}.
+
+Creato per semplificare e migliorare il processo di \textit{testing}, JUnit fornisce un set di \textit{annotation} e \textit{assert} che consentono agli sviluppatori di definire e eseguire facilmente gli \textit{unit test}.
 
 \subsection{Client}
 L'applicativo del client è progettato per gestire la comunicazione attraverso WebSocket,
