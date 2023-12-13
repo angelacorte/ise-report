@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/angelacorte/ise-report/compare/1.6.5...1.6.6) (2023-12-13)
+
+
+### Documentation
+
+* add subsection in "Dettagli Implementativi" ([0ea5822](https://github.com/angelacorte/ise-report/commit/0ea5822f3312f1ac00865252961fe54b945ff962))
+
 ## [1.6.5](https://github.com/angelacorte/ise-report/compare/1.6.4...1.6.5) (2023-12-13)
 
 
