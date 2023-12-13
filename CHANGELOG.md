@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/angelacorte/ise-report/compare/1.6.4...1.6.5) (2023-12-13)
+
+
+### Bug Fixes
+
+* fix titles ([481ebbd](https://github.com/angelacorte/ise-report/commit/481ebbd7470fa8262a6b6c0195b5a2f82a9e605f))
+
 ## [1.6.4](https://github.com/angelacorte/ise-report/compare/1.6.3...1.6.4) (2023-12-13)
 
 
