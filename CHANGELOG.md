@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/angelacorte/ise-report/compare/1.6.10...1.7.0) (2023-12-13)
+
+
+### Features
+
+* add adapter implementation details ([8625e3c](https://github.com/angelacorte/ise-report/commit/8625e3c46a72a9360d7e93a8f737043fffe2dfa2))
+
 ## [1.6.10](https://github.com/angelacorte/ise-report/compare/1.6.9...1.6.10) (2023-12-13)
 
 
