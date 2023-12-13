@@ -28,7 +28,28 @@ Per testare il funzionamento dei moduli sviluppati è stato utilizzato il \texti
 Creato per semplificare e migliorare il processo di \textit{testing}, JUnit fornisce un set di \textit{annotation} e \textit{assert} che consentono agli sviluppatori di definire e eseguire facilmente gli \textit{unit test}.
 
 \subsection{Broker}
-La base dell'applicazione è costituita dal \texttt{SubscriptionManager}, che gestisce la registrazione e la rimozione di \textit{publisher} e \textit{subscriber} attraverso connessioni \textit{WebSocket}. È inoltre presente un modulo che definisce le configurazioni per le \textit{route HTTP} che forniscono informazioni sui \textit{topic} disponibili.
+Il \textit{broker} implementato in Kotlin utilizza il \textit{framework} Ktor per gestire la comunicazione asincrona attraverso \textit{WebSocket} e le richieste \textit{HTTP}. Questo \textit{broker} distribuito si basa su due principali componenti: \texttt{Cache} e \texttt{SubscriptionManager}.
+
+Interfaccia \texttt{Cache<T>}:
+
+\begin{itemize}
+    \item È Responsabile della memorizzazione temporanea di dati associati a specifici \textit{topic}.
+    \item Fornisce operazioni come la registrazione di dati, la liberazione di risorse e la lettura di dati associati a un \textit{topic} specifico.
+\end{itemize}
+
+\texttt{SubscriptionManager<T>}:
+
+\begin{itemize}
+    \item Offre operazioni per aggiungere e rimuovere \textit{publisher} e \textit{subscriber} associati a specifici \textit{topic}.
+    \item Fornisce informazioni sui \textit{topic} disponibili e sulle sezioni associate a un determinato \textit{topic}.
+\end{itemize}
+
+Endpoint e Routing:
+
+\begin{itemize}
+    \item Il modulo \texttt{configureWebSockets} definisce i \textit{WebSocket endpoint} per la pubblicazione e la sottoscrizione di dati relativi a specifici \textit{topic}.
+    \item Il modulo \textit{configureRouting} configura le \textit{route HTTP} per ottenere informazioni sui \textit{topic} disponibili.
+\end{itemize}
 
 \subsection{Client}
 L'applicativo del client è progettato per gestire la comunicazione attraverso WebSocket,
