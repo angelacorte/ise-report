@@ -1,3 +1,10 @@
+## [1.6.9](https://github.com/angelacorte/ise-report/compare/1.6.8...1.6.9) (2023-12-13)
+
+
+### Documentation
+
+* improve broker implementation details ([5586657](https://github.com/angelacorte/ise-report/commit/55866576177ee7fa881b356f1d9c94f330645f3d))
+
 ## [1.6.8](https://github.com/angelacorte/ise-report/compare/1.6.7...1.6.8) (2023-12-13)
 
 
