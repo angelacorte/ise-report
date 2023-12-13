@@ -1,7 +1,57 @@
 \section{Validazione del Sistema}
+Per testare i moduli software sviluppati è stato utilizzato il framework di testing JUnit in combinazione con il test engine di Ktor.
 
-Choose a criterion for the evaluation of the produced software and \textbf{its compliance to the requirements above}.
+Ktor fornisce un \textit{test engine} speciale che non crea un \textit{server web}, non si collega alle \textit{socket} e non effettua alcuna richiesta \textit{HTTP}. Invece, si collega direttamente ai meccanismi interni ed elabora direttamente una chiamata dell'applicazione. Ciò si traduce in una esecuzione più veloce dei test rispetto all'avvio di un \textit{server web} completo.
 
-Pseudo-formal or formal criteria are preferred.
+Nel Listato \ref{lst:BrokerBehaviorSpec} viene presentata la classe di test \texttt{BrokerBehaviorSpec}, che testa il comportamento del \textit{Broker}.
 
-In case of a test-driven development, describe tests here and possibly report the amount of passing tests, the total amount of tests and, possibly, the test coverage.
+Il test crea due \textit{client} simulati, \textit{fooMas} e \textit{barMas}, che vengono configurati per supportare la serializzazione \textit{JSON} e le \textit{WebSocket}. Successivamente, vengono stabiliti \textit{topic} (\textit{fooTopic} e \textit{barTopic}) e un messaggio di test (\textit{message}). Vengono quindi create sessioni \textit{WebSocket} per le operazioni di sottoscrizione e pubblicazione tra i due \textit{client}.
+
+Il test verifica il seguente comportamento:
+
+\begin{itemize}
+    \item Ottiene la lista dei \textit{topic} disponibili attraverso una richiesta \textit{HTTP GET}.
+    \item Verifica che i \textit{topic} ottenuti corrispondano a quelli precedentemente stabiliti (\textit{fooTopic} e \textit{barTopic}).
+    \item Invia un messaggio da \textit{fooMas} a \textit{barTopic} attraverso una sessione di sottoscrizione, verificando l'errore \texttt{BAD\_REQUEST} in risposta.
+    \item Invia un messaggio da \textit{fooMas} a \textit{fooTopic} attraverso una sessione di pubblicazione e verifica che \textit{barSubscribeSession} riceva il messaggio.
+    \item Invia un messaggio da \textit{barMas} a \textit{barTopic} attraverso una sessione di pubblicazione e verifica che \textit{fooSubscribeSession} riceva il messaggio.
+\end{itemize}
+
+\begin{lstlisting}[caption={Classe di test \texttt{BrokerBehaviorSpec}.}, label={lst:BrokerBehaviorSpec}, language=Kotlin]
+    testApplication {
+        val fooMas = createClient {
+            install(ContentNegotiation) {
+                json()
+            }
+            install(WebSockets)
+        }
+        val barMas = createClient {
+            install(ContentNegotiation) {
+                json()
+            }
+            install(WebSockets)
+        }
+        val fooTopic = "fooTopic"
+        val barTopic = "barTopic"
+        val message = "testMessage"
+        val fooSubscribeSession = fooMas.webSocketSession("/subscribe/$barTopic")
+        val barSubscribeSession = barMas.webSocketSession("/subscribe/$fooTopic")
+        val fooPublishSession = fooMas.webSocketSession("/publish/$fooTopic")
+        val barPublishSession = barMas.webSocketSession("/publish/$barTopic")
+        val availableTopics: Set<Topic> = fooMas.get("/topics").body()
+
+        assertEquals(setOf(fooTopic, barTopic), availableTopics)
+
+        fooSubscribeSession.send(Frame.Text(message))
+        val response = fooSubscribeSession.incoming.receive()
+        assertEquals(Error.BAD_REQUEST, Json.decodeFromString((response as Frame.Text).readText()))
+
+        fooPublishSession.send(Frame.Text(message))
+        val response2 = barSubscribeSession.incoming.receive()
+        assertEquals(message, (response2 as Frame.Text).readText())
+
+        barPublishSession.send(Frame.Text(message))
+        val response3 = fooSubscribeSession.incoming.receive()
+        assertEquals(message, (response3 as Frame.Text).readText())
+    }
+\end{lstlisting}
