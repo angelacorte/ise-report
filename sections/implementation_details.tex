@@ -27,6 +27,9 @@ Per testare il funzionamento dei moduli sviluppati è stato utilizzato il \texti
 
 Creato per semplificare e migliorare il processo di \textit{testing}, JUnit fornisce un set di \textit{annotation} e \textit{assert} che consentono agli sviluppatori di definire e eseguire facilmente gli \textit{unit test}.
 
+\subsection{Broker}
+La base dell'applicazione è costituita dal \texttt{SubscriptionManager}, che gestisce la registrazione e la rimozione di \textit{publisher} e \textit{subscriber} attraverso connessioni \textit{WebSocket}. È inoltre presente un modulo che definisce le configurazioni per le \textit{route HTTP} che forniscono informazioni sui \textit{topic} disponibili.
+
 \subsection{Client}
 L'applicativo del client è progettato per gestire la comunicazione attraverso WebSocket,
 facendo uso del framework Ktor in Kotlin. Per affrontare la natura distribuita del progetto,
