@@ -1,3 +1,15 @@
+## [1.6.7](https://github.com/angelacorte/ise-report/compare/1.6.6...1.6.7) (2023-12-13)
+
+
+### Bug Fixes
+
+* change title ([b6eee2c](https://github.com/angelacorte/ise-report/commit/b6eee2ca2b43833562c3e173520df0a03602708a))
+
+
+### Documentation
+
+* remove chapter ([d43d2b2](https://github.com/angelacorte/ise-report/commit/d43d2b29085fb072ef170a4c59c99c7680f8353c))
+
 ## [1.6.6](https://github.com/angelacorte/ise-report/compare/1.6.5...1.6.6) (2023-12-13)
 
 
