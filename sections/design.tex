@@ -68,9 +68,6 @@ Le relazioni tra questi concetti sono esemplificate dal diagramma delle classi i
     \label{fig:class-dmas}
 \end{figure}
 
-\subsubsection{Client}
-Questo modulo ha lo scopo di fornire una prima implementazione del modello di comunicazione scelto per il progetto, dal punto di vista del Dmas.
-
 \subsubsection{Broker}
 
 Il diagramma delle classi del broker (Figura \ref{fig:broker-class-diagram}) presenta una struttura organizzata e modulare. Nel package \texttt{model}, sono definite due interfacce chiave: \texttt{Cache<T>} per la registrazione, la liberazione e la lettura di dati associati a un \textit{topic}, e \texttt{SubscriptionManager<T>} per gestire la sottoscrizione, l'aggiunta e la rimozione di \textit{publisher} e \textit{subscriber}, nonché l'ottenimento dei \textit{topic} disponibili e dei \textit{subscriber} associati a un \textit{topic}. Il package \texttt{plugins} include le classi \texttt{Routing} e \texttt{Websockets}, che vengono utilizzate per la definizione delle \textit{API Web}
