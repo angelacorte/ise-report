@@ -1,3 +1,10 @@
+## [1.6.10](https://github.com/angelacorte/ise-report/compare/1.6.9...1.6.10) (2023-12-13)
+
+
+### Documentation
+
+* add non-functional and implementation requirements ([3d743d4](https://github.com/angelacorte/ise-report/commit/3d743d435b186d306247aa3b272fc3f979733027))
+
 ## [1.6.9](https://github.com/angelacorte/ise-report/compare/1.6.8...1.6.9) (2023-12-13)
 
 
