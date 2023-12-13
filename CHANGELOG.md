@@ -1,3 +1,20 @@
+## [1.6.4](https://github.com/angelacorte/ise-report/compare/1.6.3...1.6.4) (2023-12-13)
+
+
+### Documentation
+
+* add subsection in "Dettagli Implementativi" ([0a2a8d2](https://github.com/angelacorte/ise-report/commit/0a2a8d2fab2a2dfeb6577dd361046386c9aac65e))
+
+
+### General maintenance
+
+* add subsubsection title ([3f77e63](https://github.com/angelacorte/ise-report/commit/3f77e631f519b8025cda0bac3b2aacc2179b7335))
+
+
+### Refactoring
+
+* remove requirement ([fd1c322](https://github.com/angelacorte/ise-report/commit/fd1c32272c7e0d955258544c91f6804f0e5cb894))
+
 ## [1.6.3](https://github.com/angelacorte/ise-report/compare/1.6.2...1.6.3) (2023-12-13)
 
 
