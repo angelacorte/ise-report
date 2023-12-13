@@ -1,3 +1,15 @@
+## [1.6.8](https://github.com/angelacorte/ise-report/compare/1.6.7...1.6.8) (2023-12-13)
+
+
+### Bug Fixes
+
+* switch to Italian and add support for kotlin listings ([ac0d494](https://github.com/angelacorte/ise-report/commit/ac0d4942a111a322881561b067baedd84e2025d2))
+
+
+### Documentation
+
+* add paragraphs in section "Validazione del Sistema" ([145594b](https://github.com/angelacorte/ise-report/commit/145594b1c2e8c28cd589a745fad8abac4d83b02c))
+
 ## [1.6.7](https://github.com/angelacorte/ise-report/compare/1.6.6...1.6.7) (2023-12-13)
 
 
