@@ -1,3 +1,17 @@
+## [1.13.1](https://github.com/angelacorte/ise-report/compare/1.13.0...1.13.1) (2023-12-14)
+
+
+### Bug Fixes
+
+* switch to Italian ([f182893](https://github.com/angelacorte/ise-report/commit/f182893d370e6a787fff92a28f445a8030c1425b))
+
+
+### Documentation
+
+* general improvements ([935c0fb](https://github.com/angelacorte/ise-report/commit/935c0fb38407c8a160a579959ad9027539a7f935))
+* improve chapter "Analisi dei Requisiti" ([b37992b](https://github.com/angelacorte/ise-report/commit/b37992b6c09699c6f629ef65fcdc71e5d084e9c4))
+* improve chapter "Introduzione" ([01c27b0](https://github.com/angelacorte/ise-report/commit/01c27b0b66250d11fb82b1f60072722cad29bd62))
+
 ## [1.13.0](https://github.com/angelacorte/ise-report/compare/1.12.0...1.13.0) (2023-12-14)
 
 
