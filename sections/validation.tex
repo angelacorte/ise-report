@@ -3,18 +3,18 @@ Per testare i moduli software sviluppati è stato utilizzato il framework di tes
 
 Ktor fornisce un \textit{test engine} speciale che non crea un \textit{server web}, non si collega alle \textit{socket} e non effettua alcuna richiesta \textit{HTTP}. Invece, si collega direttamente ai meccanismi interni ed elabora direttamente una chiamata dell'applicazione. Ciò si traduce in una esecuzione più veloce dei test rispetto all'avvio di un \textit{server web} completo.
 
-Nel Listato \ref{lst:BrokerBehaviorSpec} viene presentata la classe di test \texttt{BrokerBehaviorSpec}, che testa il comportamento del \textit{Broker}.
+Nel Listato \ref{lst:BrokerBehaviorSpec} viene presentata la classe di test \texttt{BrokerBehaviorSpec}, che testa il comportamento del \textit{broker}.
 
-Il test crea due \textit{client} simulati, \textit{fooMas} e \textit{barMas}, che vengono configurati per supportare la serializzazione \textit{JSON} e le \textit{WebSocket}. Successivamente, vengono stabiliti \textit{topic} (\textit{fooTopic} e \textit{barTopic}) e un messaggio di test (\textit{message}). Vengono quindi create sessioni \textit{WebSocket} per le operazioni di sottoscrizione e pubblicazione tra i due \textit{client}.
+Il test crea due \textit{client} simulati, \texttt{fooMas} e \texttt{barMas}, che vengono configurati per supportare la serializzazione \textit{JSON} e le \textit{WebSocket}. Successivamente, vengono stabiliti \textit{topic} (\texttt{fooTopic} e \texttt{barTopic}) e un messaggio di test (\texttt{message}). Vengono quindi create sessioni \textit{WebSocket} per le operazioni di sottoscrizione e pubblicazione tra i due \textit{client}.
 
 Il test verifica il seguente comportamento:
 
 \begin{itemize}
     \item Ottiene la lista dei \textit{topic} disponibili attraverso una richiesta \textit{HTTP GET}.
-    \item Verifica che i \textit{topic} ottenuti corrispondano a quelli precedentemente stabiliti (\textit{fooTopic} e \textit{barTopic}).
-    \item Invia un messaggio da \textit{fooMas} a \textit{barTopic} attraverso una sessione di sottoscrizione, verificando l'errore \texttt{BAD\_REQUEST} in risposta.
-    \item Invia un messaggio da \textit{fooMas} a \textit{fooTopic} attraverso una sessione di pubblicazione e verifica che \textit{barSubscribeSession} riceva il messaggio.
-    \item Invia un messaggio da \textit{barMas} a \textit{barTopic} attraverso una sessione di pubblicazione e verifica che \textit{fooSubscribeSession} riceva il messaggio.
+    \item Verifica che i \textit{topic} ottenuti corrispondano a quelli precedentemente stabiliti (\texttt{fooTopic} e \texttt{barTopic}).
+    \item Invia un messaggio da \texttt{fooMas} a \texttt{barTopic} attraverso una sessione di sottoscrizione, verificando l'errore \texttt{BAD\_REQUEST} in risposta.
+    \item Invia un messaggio da \texttt{fooMas} a \texttt{fooTopic} attraverso una sessione di pubblicazione e verifica che \texttt{barSubscribeSession} riceva il messaggio.
+    \item Invia un messaggio da \texttt{barMas} a \texttt{barTopic} attraverso una sessione di pubblicazione e verifica che \texttt{fooSubscribeSession} riceva il messaggio.
 \end{itemize}
 
 \begin{lstlisting}[caption={Classe di test \texttt{BrokerBehaviorSpec}.}, label={lst:BrokerBehaviorSpec}, language=Kotlin]

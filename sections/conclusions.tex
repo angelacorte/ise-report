@@ -1,26 +1,23 @@
 \section{Conclusioni}
-L'obiettivo di questo progetto era dare la possibilità agli utenti del framework JaKTa la possibilità di creare sistemi multi-agente distribuiti in modo semplice e veloce, 
-con il minore overhead possibile.
+L'obiettivo di questo progetto era dare la possibilità agli utenti del \textit{framework} JaKtA la possibilità di creare sistemi multi-agente distribuiti in modo semplice e veloce, con il minore \textit{overhead} possibile.
 
-È stata quindi sviluppata un'estensione del framework che fornisce una nuova implementazione del concetto di sistema multi-agente, in grado di comunicare con gli altri sistemi
-con modello di comunicazione asincrono publish-subscribe.
+È stata quindi sviluppata un'estensione del \textit{framework} che fornisce una nuova implementazione del concetto di sistema multi-agente, in grado di comunicare con gli altri sistemi con modello di comunicazione asincrono \textit{publish-subscribe}.
 
-Questo modello di comunicazione è stato implementato attraverso il framework Ktor ed il protocollo Websocket. \\
+Questo modello di comunicazione è stato implementato attraverso il \textit{framework} Ktor ed il protocollo \textit{WebSocket}.
 
-Il gruppo ritiene che l'obiettivo sia stato raggiunto, tuttavia è conscio di alcuni possibili miglioramenti alla soluzione proposta, che verranno discussi nella sezione successiva.\\
+Il team ritiene che l'obiettivo sia stato raggiunto, tuttavia è conscio di alcuni possibili miglioramenti alla soluzione proposta, che verranno discussi nella sezione successiva.
 
-In conclusione, il progetto ha costituito una buona occasione per approfondire le conoscenze acquisite nell'ambito dei sistemi multi-agente, della programmazione agent-oriented e dei sistemi distribuiti.
+In conclusione, il progetto ha costituito una buona occasione per approfondire le conoscenze acquisite nell'ambito dei sistemi multi-agente, della programmazione \textit{agent-oriented} e dei sistemi distribuiti.
 
 
 \subsection{Sviluppi Futuri}
-Il gruppo ritiene che il progetto abbia raggiunto gli obiettivi prefissati, tuttavia è consapevole che la soluzione proposta possa essere migliorata in diversi aspetti, 
-alcuni dei quali vengono elencati di seguito:
+Il team ritiene che il progetto abbia raggiunto gli obiettivi prefissati, tuttavia è consapevole che la soluzione proposta possa essere migliorata in diversi aspetti, alcuni dei quali vengono elencati di seguito:
 
 \begin{itemize}
-    \item \textbf{Supporto a più protocolli di comunicazione}: attualmente il framework supporta un solo protocollo di comunicazione, ovvero Websocket. Tuttavia sarebbe interessante
-    fornire agli utenti la possibilità di scegliere tra diversi protocolli, come ad esempio MQTT. L'architettura del progetto permetterebbe agevolmente l'aggiunta del supporto ad MQTT
-    tramite l'implementazione di una nuova \texttt{Network} ed eventualmente un nuovo \texttt{Broker}.
-    \item \textbf{Gestione dell'univocità dei nomi dei servizi remoti}: come già accennato nella sezione \ref{sec:implementation_details}, il framework non fornisce alcun meccanismo per garantire
-    l'univocità dei nomi dei servizi remoti. Una possibile soluzione può essere quella di aggiungere uno step di coordinazione al momento della connessione al broker, in modo da dare la possibilità ai
-    Dmas di registrare i propri servizi e verificare che il nome scelto non sia già stato utilizzato.
+    \item \textbf{Supporto a più protocolli di comunicazione}: attualmente il \textit{framework} supporta un solo protocollo di comunicazione, ovvero \textit{WebSocket}. Tuttavia sarebbe interessante
+    fornire agli utenti la possibilità di scegliere tra diversi protocolli, come ad esempio \textit{MQTT}. L'architettura del progetto permetterebbe agevolmente l'aggiunta del supporto ad \textit{MQTT}
+    tramite l'implementazione di una nuova \texttt{Network} ed eventualmente un nuovo \textit{broker}.
+    \item \textbf{Gestione dell'univocità dei nomi dei servizi remoti}: come già accennato nella sezione \ref{sec:implementation_details}, il \textit{framework} non fornisce alcun meccanismo per garantire
+    l'univocità dei nomi dei servizi remoti. Una possibile soluzione può essere quella di aggiungere uno step di coordinazione al momento della connessione al \textit{broker}, in modo da dare la possibilità ai
+    \textit{Dmas} di registrare i propri servizi e verificare che il nome scelto non sia già stato utilizzato.
 \end{itemize}
