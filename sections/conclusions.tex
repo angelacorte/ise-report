@@ -13,6 +13,14 @@ In conclusione, il progetto ha costituito una buona occasione per approfondire l
 
 
 \subsection{Sviluppi Futuri}
+Il gruppo ritiene che il progetto abbia raggiunto gli obiettivi prefissati, tuttavia è consapevole che la soluzione proposta possa essere migliorata in diversi aspetti, 
+alcuni dei quali vengono elencati di seguito:
 
-Recap what you did \emph{not}
-
+\begin{itemize}
+    \item \textbf{Supporto a più protocolli di comunicazione}: attualmente il framework supporta un solo protocollo di comunicazione, ovvero Websocket. Tuttavia sarebbe interessante
+    fornire agli utenti la possibilità di scegliere tra diversi protocolli, come ad esempio MQTT. L'architettura del progetto permetterebbe agevolmente l'aggiunta del supporto ad MQTT
+    tramite l'implementazione di una nuova \texttt{Network} ed eventualmente un nuovo \texttt{Broker}.
+    \item \textbf{Gestione dell'univocità dei nomi dei servizi remoti}: come già accennato nella sezione \ref{sec:implementation_details}, il framework non fornisce alcun meccanismo per garantire
+    l'univocità dei nomi dei servizi remoti. Una possibile soluzione può essere quella di aggiungere uno step di coordinazione al momento della connessione al broker, in modo da dare la possibilità ai
+    Dmas di registrare i propri servizi e verificare che il nome scelto non sia già stato utilizzato.
+\end{itemize}
