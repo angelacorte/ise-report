@@ -48,7 +48,20 @@ Il \textit{Broker} espone quattro interfacce: le interfacce \texttt{/subscribe/{
 \end{figure}
 
 \subsection{Design di Dettaglio}
-La soluzione proposta consiste nell'implementazione di una versione alternativa dell'interfaccia \textit{Mas}, chiamata \textit{Dmas}, da utilizzare in contesti distribuiti.
+Nel progettare un'estensione del framework che permetta la comunicazione tra sistemi multi-agente distribuiti, è importante stabilire che cosa viene condiviso tra questi sistemi.
+A tal proposito ci sono diverse possibilità da considerare:
+\begin{itemize}
+    \item Condividere l'Environment: in questo caso, gli agenti di ogni sistema multi-agente operano nello stesso Environment. Questa soluzione è stata ritenuta complessa e rischiosa da implementare,
+    poiché l'Environment è una struttura dati complessa e cruciale per il funzionamento del sistema multi-agente, e la sua condivisione tra più sistemi multi-agente richiederebbe una gestione molto
+    robusta della consistenza dei dati tra i vari sistemi;
+    \item Condividere gli agenti: in questo caso, sistemi multi-agente diversi possono condividere agenti. Questa soluzione è un sottoinsieme della precedente, ma presenta gli stessi problemi;
+    \item Condividere i messaggi tra gli agenti: in questo caso, sistemi multi-agente diversi possiedono Environment ed agenti diversi, ma gli agenti di un sistema possono inviare messaggi agli agenti di un altro sistema.
+\end{itemize}
+
+Il gruppo ha ritenuto l'ultima soluzione la più semplice ed efficace da implementare, in quanto la condivisione di un messaggio non presenta le stesse criticità dell'implementazione
+di strutture dati condivise. Inoltre si ritiene che questa soluzione offra comunque grande flessibilità e possibilità di realizzare comportamenti complessi tra i vari sistemi multi-agente.\\
+
+La soluzione proposta consiste dunque nell'implementazione di una versione alternativa dell'interfaccia \textit{Mas}, chiamata \textit{Dmas}, da utilizzare in contesti distribuiti.
 Questa estensione dovrà comportarsi come un Mas, ma in aggiunta dovrà essere in grado di comunicare con altri Dmas attraverso la rete.
 
 \subsubsection{Adapter}
