@@ -1,3 +1,10 @@
+## [1.11.0](https://github.com/angelacorte/ise-report/compare/1.10.0...1.11.0) (2023-12-14)
+
+
+### Features
+
+* add conclusions ([ded3644](https://github.com/angelacorte/ise-report/commit/ded36448022b69c2430fdf13ecf3c71298b4c58e))
+
 ## [1.10.0](https://github.com/angelacorte/ise-report/compare/1.9.0...1.10.0) (2023-12-14)
 
 
