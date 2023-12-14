@@ -94,3 +94,22 @@ Per quanto riguarda la gestione dei messaggi in arrivo, la funzione \texttt{subs
 Questa funzione rimane in ascolto dei messaggi inviati al 'topic' specificato, deserializza i messaggi ricevuti e li memorizza per un successivo utilizzo.
 Questo meccanismo è fondamentale per garantire una comunicazione bidirezionale efficace tra il client e il server.
 
+\subsection{Note Implementative}
+In questa sezione si vuole fare chiarezza su alcune scelte implementative che possono ritenersi sub ottimali, che sono state fatte per motivi di tempo e/o di complessità.
+
+\subsubsection{RemoteService}
+Il RemoteService funge da rappresentazione di un agente remoto, cioè un agente che appartiene ad un Dmas diverso da quello corrente, ma contattabile attraverso la rete.
+Esso è identificato dal suo nome e viene specificato in fase di creazione del Dmas. È importante notare che, al momento, non è stato implementato un meccanismo che renda
+univoci i nomi dei RemoteService per tutti i Dmas, quindi è possibile che due Dmas diversi abbiano un RemoteService con lo stesso nome, causando possibili duplicazioni dei
+messaggi intesi invece per un singolo destinatario.\\
+
+È stata valutata l'opzione di prefiggere al nome del RemoteService un codice univoco, tuttavia, siccome nel corrente design il RemoteService viene specificato in fase di creazione
+del Dmas, non è possibile conoscere a priori il codice univoco da utilizzare. C'è inoltre il riscio che due Dmas diversi, essendo in processi separati, generino lo stesso codice
+prefisso.\\
+
+\subsubsection{Nomi riservati}
+Esistono due nomi di RemoteService da ritenersi riservati: \texttt{broker} e \texttt{broadcast}. Il primo è il nome del RemoteService del Broker, mentre il secondo è utilizzato 
+per effettuare broadcasting dei messaggi.\\
+
+Attualmente non è in funzione alcun meccanismo che impedisca un programmatore di chiamare un agente del proprio Dmas con i nomi sopra citati, tuttavia, farlo potrebbe causare comportamenti
+inaspettati del sistema.\\
