@@ -1,3 +1,16 @@
+## [1.8.0](https://github.com/angelacorte/ise-report/compare/1.7.0...1.8.0) (2023-12-14)
+
+
+### Features
+
+* add error handling ([b1f2598](https://github.com/angelacorte/ise-report/commit/b1f25985c46ae97355371d1d48ba2670f001a78e))
+* add mail ([bc423fb](https://github.com/angelacorte/ise-report/commit/bc423fba4a71dc3f296ed5907e9ac81513ed90e4))
+
+
+### General maintenance
+
+* remove subsection ([b7ab3a0](https://github.com/angelacorte/ise-report/commit/b7ab3a024d4ee3b064f2785ca16dadb0f8c96023))
+
 ## [1.7.0](https://github.com/angelacorte/ise-report/compare/1.6.10...1.7.0) (2023-12-13)
 
 
