@@ -1,3 +1,10 @@
+## [1.12.0](https://github.com/angelacorte/ise-report/compare/1.11.0...1.12.0) (2023-12-14)
+
+
+### Features
+
+* add future works ([a6d3b9b](https://github.com/angelacorte/ise-report/commit/a6d3b9ba36f4474be544a97de824019a9ac1e61d))
+
 ## [1.11.0](https://github.com/angelacorte/ise-report/compare/1.10.0...1.11.0) (2023-12-14)
 
 
