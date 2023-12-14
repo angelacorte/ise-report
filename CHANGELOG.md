@@ -1,3 +1,15 @@
+## [1.13.3](https://github.com/angelacorte/ise-report/compare/1.13.2...1.13.3) (2023-12-14)
+
+
+### Bug Fixes
+
+* fic typo ([3bcfa8a](https://github.com/angelacorte/ise-report/commit/3bcfa8aed45d4fc9b332f8496a54c733df1f8b2a))
+
+
+### Documentation
+
+* add usage example ([df37eca](https://github.com/angelacorte/ise-report/commit/df37eca178190ff000d7e522117d58c7ee76f7d8))
+
 ## [1.13.2](https://github.com/angelacorte/ise-report/compare/1.13.1...1.13.2) (2023-12-14)
 
 
