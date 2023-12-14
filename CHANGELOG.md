@@ -1,3 +1,12 @@
+## [1.13.2](https://github.com/angelacorte/ise-report/compare/1.13.1...1.13.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix font ([905156a](https://github.com/angelacorte/ise-report/commit/905156a3d11cd52f07698c4095fe0884f66a2dc3))
+* fix reference ([96adefd](https://github.com/angelacorte/ise-report/commit/96adefd270b8a1d915993903527d2b01158d132c))
+* fix typos ([3d50d3c](https://github.com/angelacorte/ise-report/commit/3d50d3c20c5c401d589efb01b99a5cdd8aa9a169))
+
 ## [1.13.1](https://github.com/angelacorte/ise-report/compare/1.13.0...1.13.1) (2023-12-14)
 
 
