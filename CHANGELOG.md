@@ -1,3 +1,10 @@
+## [1.9.0](https://github.com/angelacorte/ise-report/compare/1.8.0...1.9.0) (2023-12-14)
+
+
+### Features
+
+* add implementation notes ([6f69357](https://github.com/angelacorte/ise-report/commit/6f6935735ad0abbbd05bc459ed66eef26df3fdf9))
+
 ## [1.8.0](https://github.com/angelacorte/ise-report/compare/1.7.0...1.8.0) (2023-12-14)
 
 
