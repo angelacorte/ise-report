@@ -1,3 +1,10 @@
+## [1.13.0](https://github.com/angelacorte/ise-report/compare/1.12.0...1.13.0) (2023-12-14)
+
+
+### Features
+
+* add paragraph to detailed design ([b9c51a3](https://github.com/angelacorte/ise-report/commit/b9c51a32369ffe50683de2151318018f398f1285))
+
 ## [1.12.0](https://github.com/angelacorte/ise-report/compare/1.11.0...1.12.0) (2023-12-14)
 
 
