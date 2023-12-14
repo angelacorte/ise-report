@@ -5,17 +5,19 @@
 \subsubsection{Definizione}
 Un agente è un'entità computazionale autonoma, dotata di capacità decisionali e di esecuzione indipendente. Gli agenti sono progettati per operare in un ambiente specifico, assumendo responsabilità e compiti definiti. La caratteristica chiave di un agente è la sua autonomia, che significa che può prendere decisioni in modo indipendente, senza richiedere intervento esterno per ogni azione intrapresa. Questa autonomia computazionale implica una proattività intrinseca, in cui gli agenti non attendono passivamente gli eventi ma agiscono attivamente per modificare lo stato del Sistema Multi-Agente (\textit{MAS}).
 
-Un \textit{MAS}, è un sistema computazionale composto da più agenti autonomi che interagiscono tra loro per raggiungere obiettivi comuni o individuali. In un \textit{MAS}, ogni agente è un'entità autonoma, dotata di capacità di percezione, ragionamento, decisione e azione. Gli agenti in un \textit{MAS} possono operare in modo indipendente e, al contempo, collaborare con gli altri agenti per affrontare problemi complessi o raggiungere obiettivi che possono essere difficili o impossibili da raggiungere per un singolo agente.
+Un \textit{MAS}, è un sistema computazionale composto da più agenti autonomi che interagiscono tra loro per raggiungere obiettivi comuni o individuali. In un \textit{MAS}, ogni agente è un'entità autonoma, dotata di capacità di percezione, ragionamento, decisione e azione. Gli agenti in un \textit{MAS} possono operare in modo indipendente e, al contempo, collaborare tra loro per affrontare problemi complessi o raggiungere obiettivi che possono essere difficili o impossibili da raggiungere per un singolo agente.
 
-Un aspetto cruciale è la situazionalità degli agenti, il che significa che le loro azioni dipendono dal contesto in cui si trovano. Gli agenti, interagendo tra loro e con l'ambiente circostante, diventano entità intrinsecamente sociali. Questa socialità emerge poiché l'autonomia ha senso solo quando un agente è immerso in una società di agenti, evidenziando l'assenza di agenti veramente autonomi in isolamento. L'interazione avviene attraverso lo scambio di conoscenza e informazioni, mentre la proattività degli agenti li spinge a cambiare lo stato del MAS, influenzando altri agenti o l'ambiente. In questo contesto, gli agenti diventano componenti autonome, interattive e sociali che, mediante la loro capacità di autoregolamentazione, diventano fondamentali per la gestione dei sistemi complessi.
+Un aspetto cruciale è la situazionalità degli agenti, il che significa che le loro azioni dipendono dal contesto in cui si trovano. Gli agenti, interagendo tra loro e con l'ambiente circostante, diventano entità intrinsecamente sociali. Questa socialità emerge poiché l'autonomia ha senso solo quando un agente è immerso in una società di agenti, evidenziando l'assenza di agenti veramente autonomi in isolamento. L'interazione avviene attraverso lo scambio di conoscenza e informazioni, mentre la proattività degli agenti li spinge a cambiare lo stato del \textit{MAS}, influenzando altri agenti o l'ambiente. In questo contesto, gli agenti diventano componenti autonome, interattive e sociali che, mediante la loro capacità di autoregolamentazione, diventano fondamentali per la gestione dei sistemi complessi.
 
 \subsubsection{Il Framework Belief-Desire-Intention}
 Il \textit{framework BDI (Belief-Desire-Intention)} è ampiamente accettato come uno dei più popolari e riusciti nel campo della tecnologia degli agenti. Definito da Rao e Georgeff, il \textit{framework} si basa su tre concetti chiave: \textit{belief}, \textit{desire} e \textit{intention}. Gli agenti che seguono questo \textit{framework} sono comunemente denominati agenti \textit{BDI}.
 
+Di seguito vengono presentate le caratteristiche del \textit{framework}:
+
 \begin{itemize}
     \item \textit{belief}: Per prendere decisioni, gli agenti devono avere una rappresentazione del mondo in cui vivono. Le \textit{belief} sono la conoscenza dell'ambiente che gli agenti raccolgono e possono memorizzare come parte della loro \textit{belief base}.
     \item \textit{desire}: I \textit{desire} rappresentano gli obiettivi principali del sistema. Gli agenti hanno a disposizione un insieme di piani che possono utilizzare per raggiungere i loro obiettivi, e la scelta del piano più adatto dipende dalla situazione corrente dell'agente e dell'ambiente.
-    \item \textit{intention}: Le \textit{intention} catturano la componente deliberativa del sistema. Rappresentano le azioni a cui l'agente si è impegnato per eseguire al fine di raggiungere i suoi obiettivi. Le \textit{intention} tengono traccia del progresso delle azioni e delle modifiche dell'ambiente durante l'esecuzione.
+    \item \textit{intention}: Le \textit{intention} catturano la componente deliberativa del sistema. Rappresentano le azioni a cui l'agente si è impegnato a eseguire al fine di raggiungere i suoi obiettivi. Le \textit{intention} tengono traccia del progresso delle azioni e delle modifiche dell'ambiente durante l'esecuzione.
 \end{itemize}
 
 \subsection{JaKtA}
@@ -28,7 +30,7 @@ La libreria offre un \textit{framework} per costruire Sistemi Multi-Agente compo
     \item \textbf{Ambiente}: l'ambiente in cui gli agenti vivono.
 \end{itemize}
 
-Gli agenti del \textit{MAS} osservano lo stato dell'ambiente durante la loro esecuzione e scelgono autonomamente di agire, in base alle informazioni che percepiscono. Le loro azioni possono influenzare lo stato dell'ambiente, e il cambiamento sarà percepito da tutti gli altri agenti che operano su di esso. Gli agenti sono dotati di obiettivi che sono impegnati a raggiungere, contribuendo così al raggiungimento dell'obiettivo completo del Sistema Multi-Agente. Per quanto riguarda l'ambiente, un utente può:
+Gli agenti del \textit{MAS} osservano lo stato dell'ambiente durante la loro esecuzione e scelgono autonomamente di agire, in base alle informazioni che percepiscono. Le loro azioni possono influenzare lo stato dell'ambiente, il cambiamento sarà percepito da tutti gli altri agenti che operano su di esso. Gli agenti sono dotati di obiettivi che sono impegnati a raggiungere, contribuendo così al raggiungimento dell'obiettivo complessivo del Sistema Multi-Agente. Per quanto riguarda l'ambiente, un utente può:
 
 \begin{itemize}
     \item Creare un ambiente
@@ -48,13 +50,13 @@ Inoltre, gli agenti situati nello stesso ambiente possono comunicare tra di loro
     \item Personalizzare il comportamento degli agenti durante la loro esecuzione.
 \end{itemize}
 
-La libreria consente agli utenti di definire come verranno eseguiti i loro agenti \textit{BDI}. Ciò significa che gli stessi agenti possono essere eseguiti sia in un singolo thread che tra più di essi, in modo quasi completamente trasparente. Per abilitare il \textit{MAS} a farlo, gli utenti devono definire il suo modello di esecuzione, ovvero come vengono eseguiti i suoi agenti.
+La libreria consente agli utenti di definire come verranno eseguiti i loro agenti \textit{BDI}. Ciò significa che gli stessi agenti possono essere eseguiti sia in un singolo \textit{thread} che tra più di essi, in modo quasi completamente trasparente. Per abilitare il \textit{MAS} a farlo, gli utenti devono definire il suo modello di esecuzione, ovvero come vengono eseguiti i suoi agenti.
 
 \subsection{Middleware per la Comunicazione tra Agenti Distribuiti}
 
 L'implementazione attuale di JaKtA si concentra sulla gestione dei Sistemi Multi-Agente in locale, limitando la considerazione degli agenti distribuiti in rete. Per affrontare questa limitazione e consentire una comunicazione efficace tra agenti distribuiti, si propone l'introduzione di un \textit{middleware} dedicato.
 
-Un \textit{middleware} per la comunicazione tra agenti distribuiti agirebbe come un livello intermedio tra gli agenti stessi e la rete, fornendo un'astrazione che rende trasparenti al programmatore le complessità della comunicazione distribuita. Questo \textit{middleware} si occuperebbe di gestire l'invio e la ricezione di messaggi tra agenti situati su macchine diverse, garantendo la coerenza delle informazioni.
+Un \textit{middleware} per la comunicazione tra agenti distribuiti agirebbe come un livello intermedio tra gli agenti stessi e la rete, fornendo un'astrazione che rende trasparenti al programmatore le complessità della comunicazione distribuita. Il \textit{middleware} avrebbe lo scopo di gestire l'invio e la ricezione di messaggi tra agenti situati su macchine diverse, garantendo la coerenza delle informazioni.
 
 Il \textit{middleware} si occuperebbe di stabilire e mantenere le connessioni tra gli agenti distribuiti. Questo includerebbe la gestione dei protocolli di comunicazione, delle connessioni perse e di eventuali ritardi o errori di trasmissione.
 
