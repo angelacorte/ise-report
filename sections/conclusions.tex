@@ -17,7 +17,7 @@ Il team ritiene che il progetto abbia raggiunto gli obiettivi prefissati, tuttav
     \item \textbf{Supporto a più protocolli di comunicazione}: attualmente il \textit{framework} supporta un solo protocollo di comunicazione, ovvero \textit{WebSocket}. Tuttavia sarebbe interessante
     fornire agli utenti la possibilità di scegliere tra diversi protocolli, come ad esempio \textit{MQTT}. L'architettura del progetto permetterebbe agevolmente l'aggiunta del supporto ad \textit{MQTT}
     tramite l'implementazione di una nuova \texttt{Network} ed eventualmente un nuovo \textit{broker}.
-    \item \textbf{Gestione dell'univocità dei nomi dei servizi remoti}: come già accennato nella sezione \ref{sec:implementation_details}, il \textit{framework} non fornisce alcun meccanismo per garantire
+    \item \textbf{Gestione dell'univocità dei nomi dei servizi remoti}: come già accennato nella sezione "Dettagli Implementativi", il \textit{framework} non fornisce alcun meccanismo per garantire
     l'univocità dei nomi dei servizi remoti. Una possibile soluzione può essere quella di aggiungere uno step di coordinazione al momento della connessione al \textit{broker}, in modo da dare la possibilità ai
     \textit{Dmas} di registrare i propri servizi e verificare che il nome scelto non sia già stato utilizzato.
 \end{itemize}
