@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/angelacorte/ise-report/compare/1.9.0...1.10.0) (2023-12-14)
+
+
+### Features
+
+* add link to the repo for usage examples ([7066640](https://github.com/angelacorte/ise-report/commit/7066640396cffc0c915b7737b06de53aed812a05))
+
 ## [1.9.0](https://github.com/angelacorte/ise-report/compare/1.8.0...1.9.0) (2023-12-14)
 
 
