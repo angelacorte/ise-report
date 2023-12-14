@@ -12,63 +12,60 @@
 
 \subsection{Obiettivi}
 
-Il goal principale del progetto è quello di estendere la libreria JaKtA e il relativo framework per la costruzione di Sistemi Multi-Agenti,
-con la creazione di un middleware per l'interazione tra sistemi multi-agente distribuiti.
+Il goal principale del progetto è quello di estendere la libreria JaKtA per permettere la costruzione di Sistemi Multi-Agente distribuiti in rete evitando all'utilizzatore della libreria di gestire le complessità delle comunicazioni di rete.
 
 \subsection{Requisiti}
-A partire dal goal principale del progetto, sono stati individuati diversi requisiti sistema in base alle diverse categorie di requisiti identificate:
+Sulla base dell'obiettivo principale del progetto, sono stati individuati i seguenti requisiti funzionali, non funzionali e di implementazione.
 
 \subsubsection{Requisiti Funzionali}
+I requisiti funzionali delineano le funzioni specifiche del sistema, cioè cosa il sistema deve fare:
+
 \begin{enumerate}
       \item Gestione della distribuzione degli agenti:
             \begin{enumerate}
-                  \item  Il middleware deve supportare la distribuzione degli agenti su macchine eterogenee,
+                  \item  Il \textit{middleware} deve supportare la distribuzione degli agenti su macchine eterogenee,
                         consentendo la loro esecuzione coordinata su diverse posizioni geografiche.
             \end{enumerate}
 
-      \item Implementazione di un meccanismo di dispatch dei messaggi tra i vari agenti:
+      \item Implementazione di un meccanismo di \textit{dispatch} dei messaggi tra i vari agenti:
             \begin{enumerate}
-                  \item Il middleware deve essere composto da un broker:
+                  \item Il \textit{middleware} deve sfruttare un \textit{broker} per la comunicazione in rete:
                         \begin{enumerate}
-                              \item Il broker deve consentire l'aggiunta di publisher associati a un determinato topic.
-                              \item Il broker deve permettere la rimozione di publisher associati a un topic specifico.
-                              \item Il broker deve supportare l'aggiunta di subscriber associati a un determinato topic.
-                              \item Il broker deve permettere la rimozione di subscriber associati a un topic specifico.
+                              \item Il \textit{broker} deve consentire l'aggiunta di \textit{publisher} associati a un determinato \textit{topic}.
+                              \item Il \textit{broker} deve permettere la rimozione di \textit{publisher} associati a un \textit{topic} specifico.
+                              \item Il \textit{broker} deve supportare l'aggiunta di \textit{subscriber} associati a un determinato \textit{topic}.
+                              \item Il \textit{broker} deve permettere la rimozione di \textit{subscriber} associati a un \textit{topic} specifico.
                               \item Il broker deve fornire l'elenco di tutti i topic disponibili.
-                              \item Il sistema deve utilizzare strutture dati sincronizzate per gestire in modo sicuro e concorrente l'associazione di publishers e subscribers ai topic.
                         \end{enumerate}
-                  \item Il middleware deve essere composto da un client:
+                  \item Il \textit{middleware} deve incorporare un \textit{client} che si interfacci con il \textit{broker}:
                         \begin{enumerate}
-                              \item Il client deve fornire la funzionalità di pubblicare un messaggio su un determinato topic.
-                              \item Il client deve offrire la possibilità di sottoscriversi a un topic specifico.
-                              \item Il sistema deve consentire al client di effettuare una trasmissione broadcast, inviando un messaggio a tutti i client connessi.
-                              \item  Il client deve essere in grado di stabilire e gestire connessioni WebSocket verso un server specificato tramite host e porta.
+                              \item Il \textit{client} deve fornire la funzionalità di pubblicazione di un messaggio su un determinato \textit{topic}.
+                              \item Il client deve offrire la possibilità di effettuare la sottoscrizione a un \textit{topic} specifico.
+                              \item Il sistema deve consentire al \textit{client} di effettuare una trasmissione \textit{broadcast}, inviando un messaggio a tutti gli altri \textit{client} connessi.
+                              \item  Il \textit{client} deve essere in grado di stabilire e gestire connessioni \textit{WebSocket} verso un \textit{broker} specificato tramite indirizzo \textit{IP} e porta.
                         \end{enumerate}
             \end{enumerate}
-
-      \item  Comunicazione Distribuita e Coordinazione
+      \item  Comunicazione Distribuita e Coordinazione:
             \begin{enumerate}
-                  \item  Il middleware deve gestire la comunicazione distribuita tra agenti, facilitando
-                        lo scambio di messaggi e la coordinazione delle attività.
-                  \item Deve supportare la sincronizzazione degli agenti distribuiti per garantire
-                        un'interazione coesa e coordinata.
+                  \item  Il \textit{middleware} deve gestire la comunicazione distribuita tra agenti, permettendo lo scambio di messaggi e la coordinazione delle attività.
+                  \item Deve supportare la sincronizzazione degli agenti distribuiti per garantire un'interazione coesa e coordinata.
             \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Requisiti Non Funzionali}
+\subsubsection{Requisiti non Funzionali}
+I requisiti non funzionali definiscono attributi di qualità, vincoli e proprietà generali del sistema:
 
 \begin{enumerate}
-      \item Il progetto deve essere realizzato in moduli separati, in modo da poter essere facilmente estendibile.
-      \item  Il middleware deve essere progettato per scalare orizzontalmente, supportando facilmente l'aggiunta di nuovi nodi senza degradare le prestazioni.
+      \item Il \textit{middleware} deve essere realizzato in moduli separati, in modo da poter essere facilmente manutenibile ed estendibile.
+      \item  Il \textit{middleware} deve essere progettato per scalare orizzontalmente, supportando facilmente l'aggiunta di nuovi nodi senza degradare le prestazioni.
 \end{enumerate}
 
 \subsubsection{Requisiti di Implementazione}
+I requisiti di implementazione riguardano gli aspetti tecnologici e metodologici dell'implementazione del sistema:
 
 \begin{enumerate}
-      \item  Il progetto deve essere implementato utilizzando il linguaggio di programmazione
-            Kotlin per garantire coerenza e compatibilità con la libreria JaKtA.
-      \item Utilizzare il framework Ktor per implementare il middleware per l'interazione tra
-            sistemi multi-agente distribuiti.
+      \item  Il progetto deve essere implementato utilizzando il linguaggio di programmazione Kotlin per garantire coerenza e compatibilità con la libreria JaKtA.
+      \item Utilizzare il \textit{framework} Ktor per implementare il \textit{middleware} per l'interazione tra Sistemi Multi-Agente distribuiti.
 \end{enumerate}
 
 % \subsubsection{Requisiti non funzionali}
