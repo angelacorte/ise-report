@@ -1,0 +1,22 @@
+@startuml
+participant "Mas1" as M1
+participant "Mas2" as M2
+participant "Broker" as BR
+
+== EXECUTING ==
+
+activate M1
+activate M2
+activate BR
+
+M2 --> BR
+BR --> M1
+
+== CRASH HANDLING ==
+
+destroy M2
+
+M2 --> BR
+
+BR --> M1: SendMessage(disconnected(M2))
+@enduml

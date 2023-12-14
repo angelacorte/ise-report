@@ -1,0 +1,26 @@
+@startuml
+participant "Mas1" as M1
+participant "Broker" as BR
+
+== INIT ==
+
+activate M1
+activate BR
+
+create ClientMas1 as CL
+M1 --> CL : new
+activate CL
+
+== EXECUTING ==
+
+CL --> BR
+BR --> CL
+
+== CRASH HANDLING ==
+
+destroy BR
+CL --> CL: OnBrokerDisconnection
+M1 --> CL: GetExternalEvents
+CL --> M1: SendMessage(disconnected(broker))
+
+@enduml

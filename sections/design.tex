@@ -130,7 +130,7 @@ Il broker, che assume il ruolo di server, si occupa di gestire la comunicazione 
     \item gestire la sottoscrizione dei client ai vari topic.
 \end{itemize}
 
-Il comportamento di clients e broker in situazioni di broadcast e invio di messaggi con singolo destinatario è illustrato nelle figure \ref{fig:interaction-broadcast} e \ref{fig:interaction-sendmessage}.
+Il comportamento di client e broker in situazioni di broadcast e invio di messaggi con singolo destinatario è illustrato nelle figure \ref{fig:interaction-broadcast} e \ref{fig:interaction-sendmessage}.
 
 \begin{figure}[ht!]
     \centering
@@ -144,4 +144,26 @@ Il comportamento di clients e broker in situazioni di broadcast e invio di messa
     \includegraphics[width=0.8\textwidth]{figures/interaction-sendmessage.png}
     \caption{Interazione tra DMas, client e broker in caso di invio di messaggio con singolo destinatario}
     \label{fig:interaction-sendmessage}
+\end{figure}
+
+\subsubsection{Gestione delle disconnessioni}
+Essendo il sistema distribuito, è importante assumere che possano avvenire delle disconnessioni di un qualsiasi partecipante al sistema, sia esso un Dmas o il broker.
+La strategia generale del sistema è quella di creare, a fronte di una disconnessione, un EnvironmentChange di tipo \textit{SendMessage} per ogni agente dei Dmas sottoscritti al
+partecipante disconnesso, in modo che questi possano essere informati della disconnessione e possano agire di conseguenza. È importante notare come questa strategia lasci il compito
+di gestire i fallimenti al programmatore degli agenti del Dmas. \\
+
+Nelle figure \ref{fig:interaction-disconnect} e \ref{fig:interaction-disconnect-broker} è possibile osservare come il sistema gestisce le disconnessioni di un Dmas e del broker.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/sequence-client-crash.png}
+    \caption{Interazione tra DMas, client e broker in caso di disconnessione di un Dmas}
+    \label{fig:interaction-disconnect}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/sequence-broker-crash.png}
+    \caption{Interazione tra DMas, client e broker in caso di disconnessione del broker}
+    \label{fig:interaction-disconnect-broker}
 \end{figure}
