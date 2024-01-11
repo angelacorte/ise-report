@@ -1,3 +1,10 @@
+## [1.14.0](https://github.com/angelacorte/ise-report/compare/1.13.3...1.14.0) (2024-01-11)
+
+
+### Features
+
+* add usage example ([a579baa](https://github.com/angelacorte/ise-report/commit/a579baa259b59c0ce59d046d7666916c56c21ce5))
+
 ## [1.13.3](https://github.com/angelacorte/ise-report/compare/1.13.2...1.13.3) (2023-12-14)
 
 
