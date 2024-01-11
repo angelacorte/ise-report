@@ -1,16 +1,16 @@
-\section{Esempi di Utilizzo}
+\section{Usage Examples}
 
-Per dimostrare l'effettiva utilità del \textit{middleware} introdotto in JaKtA, sono stati sviluppati degli esempi; tra questi, uno dei più significativi è \textit{Telephone Game}\ref{lst:TelephoneGame}. L'esempio implementa il seguente comportamento:
+To showcase the actual usefulness of the introduced middleware, some examples have been developed; among these, one of the most significant is \textit{Telephone Game}\ref{lst:TelephoneGame}. The example implements the following behavior:
 
 \begin{itemize}
-    \item Sono presenti N agenti, distribuiti in N \textit{MAS};
-    \item Ogni agente ha un ID univoco;
-    \item Ogni agente deve attende il messaggio dall'agente \(ID + N - 1\);
-    \item Quando l'agente riceve il messaggio lo replica verso l'agente \((ID + 1) \% N\);
-    \item Il programma termina quando gli agenti hanno scambiato il numero prestabilito di messaggi.
+    \item there are N agents, distributed among N \textit{MAS};
+    \item each agent is assigned an ID, ranging from 0 to N - 1;
+    \item each agent waits for a message from the agent with id \(ID + N - 1\);
+    \item when a message is received, the agent sends it to the agent with id \((ID + 1) \% N\);
+    \item the program ends when there has been a fixed amount of messages sent.
 \end{itemize}
 
-\begin{lstlisting}[caption={Esempio di utilizzo \texttt{TelephoneGame}.}, label={lst:TelephoneGame}, language=Kotlin]
+\begin{lstlisting}[caption={Usage example: \texttt{TelephoneGame}.}, label={lst:TelephoneGame}, language=Kotlin]
     fun main(args: Array<String>) {
         val host: String = args[0]
         val port: Int = args[1].toInt()
@@ -62,4 +62,96 @@ Per dimostrare l'effettiva utilità del \textit{middleware} introdotto in JaKtA,
     }
 \end{lstlisting}
 
-Per una panoramica completa delle funzionalità del \textit{framework}, si rimanda al \textit{repository} ufficiale \cite{repo}, dove sono presenti diversi esempi di utilizzo.
+\subsection{Broadcast}
+The next example showcases a different situation:
+\begin{itemize}
+    \item there is a Broadcaster agent, executing in his own \textit{MAS};
+    \item there are 2 Receiver agents, both executing in the same \textit{MAS} which is different from the Broadcaster's;
+    \item the Broadcaster broadcasts a message to the system;
+    \item the receivers receive the message and print it.
+\end{itemize}
+
+\begin{lstlisting}[caption={Usage example: \texttt{Broadcast}: Broadcaster's code.}, label={lst:Broadcast}, language=Kotlin]
+    fun main() {
+        val broadcastAction = object : AbstractExternalAction("broadcast", 2) {
+            override fun action(request: ExternalRequest) {
+                val type = request.arguments[0].castToAtom()
+                val message = request.arguments[1].castToStruct()
+                when (type.value) {
+                    "tell" -> broadcastMessage(Message(request.sender, Tell, message))
+                    "achieve" -> broadcastMessage(
+                        Message(request.sender, Achieve, message),
+                    )
+                }
+            }
+        }
+    
+        val env = Environment.of(
+            externalActions = mapOf(
+                broadcastAction.signature.name to broadcastAction,
+            ),
+        )
+    
+        val broadcaster = Agent.of(
+            name = "broadcaster",
+            events = listOf(
+                Event.ofAchievementGoalInvocation(
+                    it.unibo.jakta.agents.bdi.goals.Achieve.of(
+                        Jakta.parseStruct("broadcast"),
+                    ),
+                ),
+            ),
+            planLibrary = PlanLibrary.of(
+                Plan.ofAchievementGoalInvocation(
+                    value = Jakta.parseStruct("broadcast"),
+                    goals = listOf(
+                        ActInternally.of(Jakta.parseStruct("print(\"Broadcast message\")")),
+                        Act.of(Jakta.parseStruct("broadcast(tell, greetings)")),
+                    ),
+                ),
+            ),
+        )
+    
+        DMas.fromWebSocketNetwork(
+            ExecutionStrategy.oneThreadPerAgent(),
+            env,
+            listOf(broadcaster),
+            emptyList(),
+            "localhost",
+            8080,
+        ).start()
+    }
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Usage example: \texttt{Broadcast}: Receiver's code.}, label={lst:Broadcast}, language=Kotlin]
+    fun main() {
+        val env = Environment.of()
+    
+        val alice = Agent.of(
+            name = "alice",
+            planLibrary = PlanLibrary.of(
+                Plan.ofBeliefBaseAddition(
+                    belief = Belief.from(Jakta.parseStruct("greetings(source(Sender))")),
+                    goals = listOf(
+                        ActInternally.of(Jakta.parseStruct("print(\"Received message from: \", Sender)")),
+                    ),
+                ),
+            ),
+        )
+    
+        val bob = Agent.of(
+            name = "bob",
+            planLibrary = PlanLibrary.of(
+                Plan.ofBeliefBaseAddition(
+                    belief = Belief.from(Jakta.parseStruct("greetings(source(Sender))")),
+                    goals = listOf(
+                        ActInternally.of(Jakta.parseStruct("print(\"Received message from: \", Sender)")),
+                    ),
+                ),
+            ),
+        )
+    
+        DMas.withEmbeddedBroker(ExecutionStrategy.oneThreadPerMas(), env, listOf(alice, bob), emptyList()).start()
+    }
+
+\end{lstlisting}
