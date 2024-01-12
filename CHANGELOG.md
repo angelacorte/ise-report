@@ -1,3 +1,10 @@
+## [1.15.0](https://github.com/angelacorte/ise-report/compare/1.14.0...1.15.0) (2024-01-12)
+
+
+### Features
+
+* add more depth to the design choices ([fdd0ce6](https://github.com/angelacorte/ise-report/commit/fdd0ce6bb6cdb8f48cb2bb4de2a90d0d42e57b58))
+
 ## [1.14.0](https://github.com/angelacorte/ise-report/compare/1.13.3...1.14.0) (2024-01-11)
 
 
