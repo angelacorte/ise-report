@@ -1,180 +1,216 @@
 \section{Design}
-In questa sezione viene presentato il design del progetto, partendo dalle decisioni prese in ambito architetturale e proseguendo con il design di dettaglio.
+In the following section, the design of the project is presented, starting from the architecture-wise decisions and proceeding with the detailed design.
 
-\subsection{Design Architetturale}
-Come illustrato nei capitoli precedenti, il progetto si propone di sviluppare un meccanismo per la creazione di sistemi multi-agente distribuiti utilizzando \textit{JaKtA}.
-Il team ha deciso di raggiungere questo obiettivo fornendo un'estensione del \textit{framework} e del suo \textit{Domain Specific Language} il più minimale possibile.
-Dal punto di vista architetturale, il progetto si colloca come modulo a sé stante, come mostrato nella figura \ref{fig:architecture}:
+\subsection{Architectural Design}
+As we have seen in the previous chapters, the project aims to develop a mechanism for the creation of distributed multi-agent systems using \textit{JaKtA}.
+The team has decided to achieve this goal by providing an extension of the framework and its \textit{Domain Specific Language} that is as minimal as possible.
+From an architectural point of view, the project is a standalone module, as shown in figure \ref{fig:architecture}:
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/general-architecture.png}
-    \caption{Architettura del progetto}
+    \caption{Architecture of the project}
     \label{fig:architecture}
 \end{figure}
 
-In particolare, il modulo sviluppato è formato da tre componenti principali, come mostrato nella figura \ref{fig:detailed-architecture}:
+In particular, the developed module is composed of three main components, as shown in figure \ref{fig:detailed-architecture}:
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/detailed-architecture.png}
-    \caption{Architettura del modulo sviluppato}
+    \caption{Detailed architecture of the project}
     \label{fig:detailed-architecture}
 \end{figure}
 
-Dei moduli rappresentati in figura \ref{fig:detailed-architecture}, il modulo \textit{Adapter} è quello che definisce e contiene tutti i concetti da implementare per realizzare l'obiettivo di progetto,
-mentre i moduli \textit{Client} e \textit{Broker} forniscono una prima implementazione della logica di comunicazione tra i sistemi multi-agente distribuiti.\\
+Of the modules represented in figure \ref{fig:detailed-architecture}, the \textit{Adapter} module is the one that defines and contains all the concepts to be implemented to achieve the project goal,
+while the \textit{Client} and \textit{Broker} modules provide a first implementation of the communication logic between distributed multi-agent systems.\\
 
-Come anticipato in precedenza, il progetto presenta anche un'estensione del \textit{Domain Specific Language} di JaKtA, la cui struttura è rappresentata nella figura \ref{fig:dsl-architecture}.
+As previously mentioned, the project also presents an extension of the JaKtA \textit{Domain Specific Language}, whose structure is represented in figure \ref{fig:dsl-architecture}.
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/dsl-architecture.png}
-    \caption{Architettura del Domain Specific Language}
+    \caption{Domain Specific Language architecture}
     \label{fig:dsl-architecture}
 \end{figure}
 
-\subsubsection{Architettura di Rete}
+\subsubsection{Network Architecture}
+The component diagram shown in Figure \ref{fig:network-architecture} provides an overview of the network architecture.
 
-Il diagramma dei componenti presentato in Figura \ref{fig:network-architecture} offre una panoramica dell'architettura di rete.
-Il \textit{Broker} espone quattro interfacce: le interfacce \texttt{/subscribe/{topic}} e \texttt{/publish/{topic}} consentono rispettivamente la sottoscrizione e la pubblicazione su \textit{topic} specifici, mentre l'interfaccia \texttt{/topics} permette di recuperare l'elenco dei \textit{topic} disponibili. Inoltre, l'interfaccia \texttt{/subscribe-all/\{except...\}} offre la possibilità di sottoscrivere a tutti i \textit{topic} tranne quelli specificati. Il \textit{MAS}, d'altra parte, si connette al \textit{Broker} attraverso queste interfacce, sfruttandole per sottoscrivere, pubblicare e ottenere informazioni dagli altri \textit{MAS}. Questo setup permette la gestione delle comunicazioni distribuite, con il \textit{Broker} che funge da fulcro centrale per agevolare la sottoscrizione, la pubblicazione e la gestione dei \textit{topic} all'interno del sistema.
+The \textit{Broker} exposes four interfaces: the \textit{/subscribe/{topic}} and \textit{/publish/{topic}} interfaces allow respectively the subscription and publication on specific topics, while the topics interface allows to retrieve the list of available topics. Furthermore, the \textit{/subscribe-all/\{except...\}} interface offers the possibility to subscribe to all topics except those specified. The \textit{MAS}, on the other hand, connects to the \textit{Broker} through these interfaces, using them to subscribe, publish and obtain information from the other \textit{MAS}. This setup allows the management of distributed communications, with the \textit{Broker} acting as a central hub to facilitate the subscription, publication and management of topics within the system.
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/network-architecture.png}
-    \caption{Architettura di rete}
+    \caption{Network architecture}
     \label{fig:network-architecture}
 \end{figure}
 
-\subsection{Design di Dettaglio}
-Nel progettare un'estensione del \textit{framework} che permetta la comunicazione tra sistemi multi-agente distribuiti, è importante stabilire cosa viene condiviso tra questi sistemi.
-A tal proposito ci sono diverse possibilità da considerare:
+\subsection{Detailed Design}
+When designing an extension of the framework that allows communication between distributed multi-agent systems, it is important to establish what is shared between these systems.
+To this end, there are several possibilities to consider:
+
+%\begin{itemize}
+%    \item Condividere l'\textit{Environment}: in questo caso, gli agenti di ogni sistema multi-agente operano nello stesso \textit{Environment}. Questa soluzione è stata ritenuta complessa e rischiosa da implementare,
+%          poiché l'\textit{Environment} è una struttura dati complessa e cruciale per il funzionamento del sistema multi-agente, e la sua condivisione tra più sistemi richiederebbe una gestione molto robusta della consistenza dei dati tra i vari sistemi;
+%    \item Condividere gli agenti: in questo caso, sistemi multi-agente diversi possono condividere agenti. Questa soluzione è un sottoinsieme della precedente, ma presenta gli stessi problemi;
+%    \item Condividere i messaggi tra gli agenti: in questo caso, sistemi multi-agente diversi possiedono \textit{Environment} ed agenti diversi, ma gli agenti di un sistema possono inviare messaggi agli agenti di un altro sistema.
+%\end{itemize}
+%
+%Il team ha ritenuto l'ultima soluzione la più semplice ed efficace da implementare, in quanto la condivisione di un messaggio non presenta le stesse criticità dell'implementazione di strutture dati condivise. Inoltre si ritiene che questa soluzione offra comunque grande flessibilità e possibilità di realizzare comportamenti complessi tra i vari sistemi multi-agente.
+
+\paragraph{Sharing the Environment}: in this case, the agents of each multi-agent system operate in the "same" \textit{Environment}. This means that any modification that may happen on the environment is known by each distributed Mas, for example:
 \begin{itemize}
-    \item Condividere l'\textit{Environment}: in questo caso, gli agenti di ogni sistema multi-agente operano nello stesso \textit{Environment}. Questa soluzione è stata ritenuta complessa e rischiosa da implementare,
-    poiché l'\textit{Environment} è una struttura dati complessa e cruciale per il funzionamento del sistema multi-agente, e la sua condivisione tra più sistemi richiederebbe una gestione molto robusta della consistenza dei dati tra i vari sistemi;
-    \item Condividere gli agenti: in questo caso, sistemi multi-agente diversi possono condividere agenti. Questa soluzione è un sottoinsieme della precedente, ma presenta gli stessi problemi;
-    \item Condividere i messaggi tra gli agenti: in questo caso, sistemi multi-agente diversi possiedono \textit{Environment} ed agenti diversi, ma gli agenti di un sistema possono inviare messaggi agli agenti di un altro sistema.
+    \item agent creation;
+    \item agent deletion;
+    \item actions;
+    \item messages exchanged between agents;
+    \item any data added or removed from the environment.
 \end{itemize}
 
-Il team ha ritenuto l'ultima soluzione la più semplice ed efficace da implementare, in quanto la condivisione di un messaggio non presenta le stesse criticità dell'implementazione di strutture dati condivise. Inoltre si ritiene che questa soluzione offra comunque grande flessibilità e possibilità di realizzare comportamenti complessi tra i vari sistemi multi-agente.
+This solution allows for easy programming of the distributed system, since the environment and the agents it contains are the same for each distributed Mas, making it possible for the programmer to write the program as if it were a single Mas.
+However, this solution presents some technical problems:
+\begin{enumerate}
+    \item The environment is a complex data structure, and its sharing between multiple systems requires very robust management of data consistency between the various systems;
+    \item If the environment is shared, this means that any sort of modification is propagated to the network, to keep the environments in each distributed Mas consistent. This
+          can lead to a lot of network traffic, putting pressure on the broker services;
+    \item This solution does not allow for the creation of multiple environments, which could be useful in some cases.
+\end{enumerate}
 
-La soluzione proposta consiste dunque nell'implementazione di una versione alternativa dell'interfaccia \texttt{Mas}, chiamata \texttt{Dmas}, da utilizzare in contesti distribuiti.
-Questa estensione dovrà comportarsi come un \texttt{Mas}, ma in aggiunta dovrà essere in grado di comunicare con altri \texttt{Dmas} attraverso la rete.
+\paragraph{Sharing messages}: in this case, different multi-agent systems have different environments and agents, but the agents of a system can send messages to the agents of another system, both in a one-to-one fashion and in a one-to-many fashion.
+This solution embodies the idea of "do not communicate by sharing memory; instead, share memory by communicating" and is a technically easier solution to implement than the previous one, since it does not require a robust management of data consistency between the various systems.
+Also it could be more flexible regarding programmer needs, since it allows for the creation of multiple environments, and the programmer can decide which messages to share between the various systems.
+
+However, this solution is somewhat limited in some respects:
+\begin{itemize}
+    \item the only way to share data between the various systems is through communication, so the programmer need to instruct the agents to send messages to agents in the other systems;
+    \item since the environments are not shared, the programmer needs to take care of the consistency of the data between the various systems;
+    \item again, not sharing the environments means that the programmer needs to design multiple distributed Mas', as opposed to the previous solution.
+\end{itemize}
+
+In summary, this solution removes some complexity from the distributed infrastructure design, but puts some on the programmer's shoulders.\\
+
+Regardless, after some discussion, taking into account the project's scope and technical difficulties, the team decided to implement the second solution, valuing its simplicity and flexibility.
+So the proposed solution consists in the implementation of an alternative version of the \texttt{Mas} interface, called \texttt{Dmas}, to be used in distributed contexts.
+This extension should behave like a \texttt{Mas}, but in addition should be able to communicate with other \texttt{Dmas} through the network.
 
 \subsubsection{Adapter}
-Questo modulo si occupa di definire i concetti di:
+This module defines the concepts of:
 
 \begin{itemize}
-    \item \textbf{Dmas}: rappresenta un sistema multi-agente distribuito, cioè che può comunicare con altri sistemi \texttt{Dmas} attraverso la rete.
-    \item \textbf{Network}: incapsula la logica di comunicazione tra \texttt{Dmas} attraverso la rete.
-    \item \textbf{RemoteService}: rappresenta un agente remoto, cioè un agente che appartiene ad un \texttt{Dmas} diverso da quello corrente, ma raggiungibile attraverso la rete.
+    \item \textbf{Dmas}: represents a distributed multi-agent system, i.e. a system that can communicate with other \texttt{Dmas} through the network;
+    \item \textbf{Network}: incapsulates the logic for the communication between \texttt{Dmas};
+    \item \textbf{RemoteService}: represents a remote agent, i.e. an agent that belongs to a \texttt{Dmas} different from the current one, but reachable through the network.
 \end{itemize}
 
-Le relazioni tra questi concetti sono esemplificate dal diagramma delle classi in figura \ref{fig:class-dmas}.
+The relationships between these concepts are exemplified by the class diagram in figure \ref{fig:class-dmas}.
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/class-dmas.png}
-    \caption{Diagramma delle classi del modulo Adapter}
+    \caption{Adapter class diagram}
     \label{fig:class-dmas}
 \end{figure}
 
 \subsubsection{Broker}
 
-Il diagramma delle classi del \textit{broker} (Figura \ref{fig:broker-class-diagram}) presenta una struttura organizzata e modulare. Nel package \texttt{model}, sono definite due interfacce chiave: \texttt{Cache<T>} per la registrazione, la liberazione e la lettura di dati associati a un \textit{topic}, e \texttt{SubscriptionManager<T>} per gestire la sottoscrizione, l'aggiunta e la rimozione di \textit{publisher} e \textit{subscriber}, nonché l'ottenimento dei \textit{topic} disponibili e dei \textit{subscriber} associati a un \textit{topic}. Il package \texttt{plugins} include le classi \texttt{Routing} e \texttt{Websockets}, che vengono utilizzate per la definizione delle \textit{API Web}
+The \textit{broker}'s class diagram (Figure \ref{fig:broker-class-diagram}) presents a modular and organized structure.
+Inside the \texttt{model} package, two key interfaces are defined: \texttt{Cache<T>} for registering, releasing and reading data associated with a \textit{topic}, and \texttt{SubscriptionManager<T>} for managing the subscription, addition and removal of \textit{publishers} and \textit{subscribers}, as well as obtaining the available \textit{topics} and the \textit{subscribers} associated with a \textit{topic}.
+The \texttt{plugins} package includes the \texttt{Routing} and \texttt{Websockets} classes, which are used to define the \textit{Web APIs}.
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/broker-class-diagram.png}
-    \caption{Diagramma delle classi del \textit{Broker}}
+    \caption{Broker class diagram}
     \label{fig:broker-class-diagram}
 \end{figure}
 
-\subsection{Comportamento}
-Il comportamento delle varie componenti del sistema può essere descritto attraverso i seguenti passaggi.
+\subsection{Behavior}
+The behavior of the various components of the system can be described through the following steps.
 
-\subsubsection{Inizializzazione del Sistema}
+\subsubsection{System Initialization}
 
 \begin{enumerate}
-    \item istanziazione di una \texttt{Network};
-    \item connessione da parte della \texttt{Network} al \textit{broker};
-    \item definizione dei \texttt{RemoteService} di interesse;
-    \item istanziazione di un \texttt{Dmas};
-    \item per ogni \texttt{RemoteService}, il \texttt{Dmas} si sottoscrive ai \textit{topic} di interesse;
-    \item esecuzione del dispatch della \texttt{ExecutionStrategy} scelta per il \texttt{Dmas};
+    \item \textit{Network} initialization;
+    \item connection between Network and \textit{Broker};
+    \item definition of the \textit{RemoteService}s of interest;
+    \item \textit{Dmas} creation;
+    \item for each RemoteService, the Dmas subscribes to the according \textit{topic};
+    \item \textit{ExecutionStrategy} dispatching;
 \end{enumerate}
 
-Queste attività sono illustrate in figura \ref{fig:initialization}.
+These activities are showcased in the figure \ref{fig:initialization}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/activity-dmas.png}
-    \caption{Inizializzazione del sistema}
+    \caption{System initialization}
     \label{fig:initialization}
 \end{figure}
 
-\subsubsection{Ciclo di Esecuzione del Dmas}
+\subsubsection{Dmas execution cycle}
 
 \begin{enumerate}
-    \item il \texttt{Dmas} raccoglie tutti gli eventi esterni ricevuti dalla \texttt{Network}, ossia i messaggi pubblicati dai \texttt{RemoteService} a cui si è sottoscritto e le eventuali notifiche di disconnessione di un \texttt{RemoteService}, sotto forma di \texttt{EnvironmentChange};
-    \item gli eventi esterni vengono concatenati alla coda degli \texttt{EnvironmentChange} interni del \texttt{Dmas};
-    \item ad uno ad uno, gli \texttt{EnvironmentChange} vengono processati dal \texttt{Dmas}. Nel caso in cui l'evento consista nell'inviare un messaggio ad un \texttt{RemoteService} o un \textit{broadcast}, il messaggio viene inviato alla \texttt{Network}, che si occuperà di inoltrarlo al \textit{broker};
+    \item the \texttt{Dmas} collects all the external events received from the \texttt{Network}, i.e. the messages published by the \texttt{RemoteService}s to which it has subscribed and the eventual disconnection notifications of a \texttt{RemoteService}, in the form of \texttt{EnvironmentChange};
+    \item external events are concatenated to the queue of internal EnvironmentChanges of the Dmas;
+    \item one by one, the \texttt{EnvironmentChange}s are processed by the \texttt{Dmas}. In case the event consists of sending a message to a \texttt{RemoteService} or a \textit{broadcast}, the message is sent to the \texttt{Network}, which will forward it to the \textit{broker};
 \end{enumerate}
 
-Queste attività sono illustrate in figura \ref{fig:execution}.
+These activities are showcased in the figure \ref{fig:execution}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/activity-applychanges.png}
-    \caption{Ciclo di esecuzione del \texttt{Dmas}}
+    \caption{Dmas execution cycle}
     \label{fig:execution}
 \end{figure}
 
-\subsection{Interazioni}
-Il modello di interazione tra i vari \texttt{Dmas} collegati alla rete è di tipo \textit{publish-subscribe}: ogni \texttt{Dmas}, che assume il ruolo di \textit{client}, può sottoscrivere ad uno o più \textit{topic}, e può pubblicare messaggi su uno o più \textit{topic}.
-I messaggi pubblicati su un \textit{topic} vengono ricevuti da tutti i \textit{client} che si sono sottoscritti a quel \textit{topic}.
-Il \textit{broker}, che assume il ruolo di server, si occupa di gestire la comunicazione tra i \textit{client}, in particolare si occupa di:
-\begin{itemize}
-    \item ricevere i messaggi pubblicati dai \textit{client};
-    \item inviare i messaggi ai \textit{client} sottoscritti ai \textit{topic} corrispondenti;
-    \item gestire le connessioni e le disconnessioni dei \textit{client}.
-    \item gestire la sottoscrizione dei \textit{client} ai vari \textit{topic}.
-\end{itemize}
+\subsection{Interaction}
+The interaction model between the various \texttt{Dmas} connected to the network is of the \textit{publish-subscribe} type: each \texttt{Dmas}, which assumes the role of \textit{client}, can subscribe to one or more \textit{topics}, and can publish messages on one or more \textit{topics}.
+Published messages are received by all \textit{client} that have subscribed to the \textit{topic} to which the message was published.
 
-Il comportamento di \textit{client} e \textit{broker} in situazioni di \textit{broadcast} e invio di messaggi con singolo destinatario è illustrato nelle figure \ref{fig:interaction-broadcast} e \ref{fig:interaction-sendmessage}.
+The \textit{broker}, which assumes the role of server, is responsible for managing the communication between the \textit{clients}, in particular, it is responsible for:
+\begin{itemize}
+    \item receiving the messages published by the \textit{clients};
+    \item sending the messages to the \textit{clients} subscribed to the corresponding \textit{topics};
+    \item managing the connections and disconnections of the \textit{clients}.
+    \item managing the subscription of the \textit{clients} to the various \textit{topics}.
+\end{itemize}
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/interaction-broadcast.png}
-    \caption{Interazione tra \texttt{Dmas}, \textit{client} e \textit{broker} in caso di \textit{broadcast}}
+    \caption{Interaction between DMas, \textit{client} and \textit{broker} in case of \textit{broadcast}}
     \label{fig:interaction-broadcast}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/interaction-sendmessage.png}
-    \caption{Interazione tra DMas, \textit{client} e \textit{broker} in caso di invio di messaggio con singolo destinatario}
+    \caption{Interaction between DMas, \textit{client} and \textit{broker} in case of sending a message to a single recipient}
     \label{fig:interaction-sendmessage}
 \end{figure}
 
-\subsubsection{Gestione delle disconnessioni}
-Essendo il sistema distribuito, è importante assumere che possano avvenire delle disconnessioni di un qualsiasi partecipante al sistema, sia esso un \texttt{Dmas} o il \textit{broker}.
-La strategia generale del sistema è quella di creare, a fronte di una disconnessione, un \texttt{EnvironmentChange} di tipo \texttt{SendMessage} per ogni agente dei \texttt{Dmas} sottoscritti al
-partecipante disconnesso, in modo che questi possano essere informati della disconnessione e possano agire di conseguenza. È importante notare come questa strategia lasci il compito
-di gestire i fallimenti al programmatore degli agenti del \texttt{Dmas}.
+The behavior of \textit{client} and \textit{broker} in situations of \textit{broadcast} and sending of messages with a single recipient is illustrated in figures \ref{fig:interaction-broadcast} and \ref{fig:interaction-sendmessage}.
 
-Nelle figure \ref{fig:interaction-disconnect} e \ref{fig:interaction-disconnect-broker} è possibile osservare come il sistema gestisce le disconnessioni di un \texttt{Dmas} e del \textit{broker}.
+
+\subsubsection{Disconnection management}
+Since the system is distributed, it is important to assume that disconnections of any participant in the system may occur, be it a \texttt{Dmas} or the \textit{broker}.
+The general strategy of the system is to create, in the event of a disconnection, an \texttt{EnvironmentChange} of type \texttt{SendMessage} for each agent of the \texttt{Dmas} subscribed to the
+disconnected participant, so that they can be informed of the disconnection and act accordingly. It is important to note that this strategy leaves the task of managing failures to the programmer of the agents of the \texttt{Dmas}.
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/sequence-client-crash.png}
-    \caption{Interazione tra \texttt{Dmas}, \textit{client} e \textit{broker} in caso di disconnessione di un \texttt{Dmas}}
-    \label{fig:interaction-disconnect}
+    \caption{Interaction between \texttt{Dmas}, \textit{client} and \textit{broker} in case of \textit{client} disconnection
+        \label[type]{fig:interaction-disconnect}}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/sequence-broker-crash.png}
-    \caption{Interazione tra \texttt{Dmas}, \textit{client} e \textit{broker} in caso di disconnessione del \textit{broker}}
+    \caption{Interaction between \texttt{Dmas}, \textit{client} and \textit{broker} in case of \textit{broker} disconnection}
     \label{fig:interaction-disconnect-broker}
 \end{figure}
+
+Figures \ref{fig:interaction-disconnect} and \ref{fig:interaction-disconnect-broker} show how the system manages the disconnections from \texttt{Dmas} and \textit{broker}.
