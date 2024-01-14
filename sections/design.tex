@@ -59,7 +59,8 @@ To this end, there are several possibilities to consider:
 %
 %Il team ha ritenuto l'ultima soluzione la più semplice ed efficace da implementare, in quanto la condivisione di un messaggio non presenta le stesse criticità dell'implementazione di strutture dati condivise. Inoltre si ritiene che questa soluzione offra comunque grande flessibilità e possibilità di realizzare comportamenti complessi tra i vari sistemi multi-agente.
 
-\paragraph{Sharing the Environment}: in this case, the agents of each multi-agent system operate in the "same" \textit{Environment}. This means that any modification that may happen on the environment is known by each distributed Mas, for example:
+\paragraph{Sharing the Environment}: in this case, the agents of each multi-agent system operate in the "same" \textit{Environment}.
+This means that any modification that may happen on the environment is known by each distributed Mas, for example:
 \begin{itemize}
     \item agent creation;
     \item agent deletion;
@@ -79,7 +80,12 @@ However, this solution presents some technical problems:
 
 \paragraph{Sharing messages}: in this case, different multi-agent systems have different environments and agents, but the agents of a system can send messages to the agents of another system, both in a one-to-one fashion and in a one-to-many fashion.
 This solution embodies the idea of "do not communicate by sharing memory; instead, share memory by communicating" and is a technically easier solution to implement than the previous one, since it does not require a robust management of data consistency between the various systems.
-Also it could be more flexible regarding programmer needs, since it allows for the creation of multiple environments, and the programmer can decide which messages to share between the various systems.
+Also, it could be more flexible regarding programmer needs, since it allows for the creation of multiple environments, and the programmer can decide which messages to share between the various systems.
+
+In the context of multi-agent systems, every agent is associated with a unique \textit{topic}.
+To enable an effective communication, it is necessary for two agents to know each other's \textit{topic} in advance.
+This association enables targeted and organized communication, aiming for agents to focus solely on information relevant to their scope,
+thereby facilitating the coordination of activities in the system.
 
 However, this solution is somewhat limited in some respects:
 \begin{itemize}
