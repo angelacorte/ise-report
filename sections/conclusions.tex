@@ -1,23 +1,22 @@
-\section{Conclusioni}
-L'obiettivo di questo progetto era dare la possibilità agli utenti del \textit{framework} JaKtA la possibilità di creare sistemi multi-agente distribuiti in modo semplice e veloce, con il minore \textit{overhead} possibile.
+\section{Conclusions}
+The goal of this project was to give users of the \textit{framework} JaKtA the possibility to create distributed multi-agent systems easily and quickly, with the least possible \textit{overhead}.
 
-È stata quindi sviluppata un'estensione del \textit{framework} che fornisce una nuova implementazione del concetto di sistema multi-agente, in grado di comunicare con gli altri sistemi con modello di comunicazione asincrono \textit{publish-subscribe}.
+Therefore, an extension of the \textit{framework} was developed, providing a new implementation of the multi-agent system concept capable of communicating with other systems using an asynchronous \textit{publish-subscribe} communication model.
 
-Questo modello di comunicazione è stato implementato attraverso il \textit{framework} Ktor ed il protocollo \textit{WebSocket}.
+This communication model was implemented through the \textit{framework} Ktor and the \textit{WebSocket} protocol.
 
-Il team ritiene che l'obiettivo sia stato raggiunto, tuttavia è conscio di alcuni possibili miglioramenti alla soluzione proposta, che verranno discussi nella sezione successiva.
+The team believes that the goal has been achieved; however, they are aware of some possible improvements to the proposed solution, which will be discussed in the next section.
 
-In conclusione, il progetto ha costituito una buona occasione per approfondire le conoscenze acquisite nell'ambito dei sistemi multi-agente, della programmazione \textit{agent-oriented} e dei sistemi distribuiti.
+In conclusion, the project has provided a good opportunity to deepen the knowledge acquired in the field of multi-agent systems, agent-oriented programming, and distributed systems.
 
 
-\subsection{Sviluppi Futuri}
-Il team ritiene che il progetto abbia raggiunto gli obiettivi prefissati, tuttavia è consapevole che la soluzione proposta possa essere migliorata in diversi aspetti, alcuni dei quali vengono elencati di seguito:
-
+\subsection{Future Work}
+The team believes that the project has achieved its set objectives; however, it is aware that the proposed solution can be improved in various aspects, some of which are listed below:
 \begin{itemize}
-    \item \textbf{Supporto a più protocolli di comunicazione}: attualmente il \textit{framework} supporta un solo protocollo di comunicazione, ovvero \textit{WebSocket}. Tuttavia sarebbe interessante
-    fornire agli utenti la possibilità di scegliere tra diversi protocolli, come ad esempio \textit{MQTT}. L'architettura del progetto permetterebbe agevolmente l'aggiunta del supporto ad \textit{MQTT}
-    tramite l'implementazione di una nuova \texttt{Network} ed eventualmente un nuovo \textit{broker}.
-    \item \textbf{Gestione dell'univocità dei nomi dei servizi remoti}: come già accennato nella sezione "Dettagli Implementativi", il \textit{framework} non fornisce alcun meccanismo per garantire
-    l'univocità dei nomi dei servizi remoti. Una possibile soluzione può essere quella di aggiungere uno step di coordinazione al momento della connessione al \textit{broker}, in modo da dare la possibilità ai
-    \texttt{Dmas} di registrare i propri servizi e verificare che il nome scelto non sia già stato utilizzato.
+    \item \textbf{Support for Multiple Communication Protocols}: Currently, the \textit{framework} supports only one communication protocol, namely \textit{WebSocket}. However, it would be interesting
+    to provide users with the option to choose from different protocols, such as \textit{MQTT}.
+    The project's architecture would easily allow adding \textit{MQTT} support through the implementation of a new \texttt{Network} and potentially a new \textit{broker}.
+    \item \textbf{Handling Uniqueness of Remote Service Names}: As mentioned in the "Implementation Details" section, the \textit{framework} does not provide any mechanism to ensure
+    the uniqueness of remote service names.
+    One possible solution could be to add a coordination step during the connection to the \textit{broker}, allowing \texttt{Dmas} to register their services and check that the chosen name has not been used already.
 \end{itemize}
