@@ -173,7 +173,9 @@ These activities are showcased in the figure \ref{fig:execution}.
 
 \subsection{Interaction}
 The interaction model between the various \texttt{Dmas} connected to the network is of the \textit{publish-subscribe} type: each \texttt{Dmas}, which assumes the role of \textit{client}, can subscribe to one or more \textit{topics}, and can publish messages on one or more \textit{topics}.
-Published messages are received by all \textit{client} that have subscribed to the \textit{topic} to which the message was published.
+Published messages are received by all \textit{clients} that have subscribed to the \textit{topic} to which the message was published.
+It is relevant to note that agents know each other's \textit{topic}.
+
 
 The \textit{broker}, which assumes the role of server, is responsible for managing the communication between the \textit{clients}, in particular, it is responsible for:
 \begin{itemize}
