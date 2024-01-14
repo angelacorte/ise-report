@@ -120,6 +120,14 @@ The relationships between these concepts are exemplified by the class diagram in
 
 \subsubsection{Broker}
 
+In the design and implementation of our system, a dedicated broker has been introduced to cater to specific requirements and unique behavioral patterns. This decision was driven by the need for nuanced control over message publication and subscriptions, differentiating our broker from conventional MQTT or AMQT brokers. Several motivations underpin this choice:
+
+Our broker deviates from the conventional MQTT or AMQT model by enforcing a distinct behavior: for a given topic, only a single client can publish messages at any given time. This ensures a controlled and orderly flow of information, avoiding conflicts that may arise when multiple clients attempt simultaneous publications on the same channel.
+
+While adhering to the exclusive publishing behavior for most topics, exceptions are made for specific topics, such as the "broadcast" topic. Topics falling under this category do not follow the stringent single-client publishing rule, allowing for broader dissemination of information.
+
+A pivotal aspect of our dedicated broker lies in the introduction of specialized error-handling mechanisms. Notably, in the event of a publisher disconnecting, the broker takes proactive measures to notify the disconnection to the subscribers. This tailored approach to error management ensures that clients are promptly informed of disruptions, facilitating responsive and effective handling of disconnection scenarios.
+
 The \textit{broker}'s class diagram (Figure \ref{fig:broker-class-diagram}) presents a modular and organized structure.
 Inside the \texttt{model} package, two key interfaces are defined: \texttt{Cache<T>} for registering, releasing and reading data associated with a \textit{topic}, and \texttt{SubscriptionManager<T>} for managing the subscription, addition and removal of \textit{publishers} and \textit{subscribers}, as well as obtaining the available \textit{topics} and the \textit{subscribers} associated with a \textit{topic}.
 The \texttt{plugins} package includes the \texttt{Routing} and \texttt{Websockets} classes, which are used to define the \textit{Web APIs}.
