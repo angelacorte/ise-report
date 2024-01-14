@@ -1,63 +1,58 @@
-\section{Introduzione}
+\section{Introduction}
 
-\subsection{Agenti}
+\subsection{Agents}
 
-\subsubsection{Definizione}
-Un agente è un'entità computazionale autonoma, dotata di capacità decisionali e di esecuzione indipendente. Gli agenti sono progettati per operare in un ambiente specifico, assumendo responsabilità e compiti definiti. La caratteristica chiave di un agente è la sua autonomia, che significa che può prendere decisioni in modo indipendente, senza richiedere intervento esterno per ogni azione intrapresa. Questa autonomia computazionale implica una proattività intrinseca, in cui gli agenti non attendono passivamente gli eventi ma agiscono attivamente per modificare lo stato del Sistema Multi-Agente (\textit{MAS}).
+\subsubsection{Definition}
+An agent is an autonomous computational entity endowed with decision-making and independent execution capabilities. Agents are designed to operate in a specific environment, assuming defined responsibilities and tasks. The key characteristic of an agent is its autonomy, which means it can make decisions independently, without requiring external intervention for every action undertaken. This computational autonomy implies intrinsic proactivity, wherein agents don't passively await events but actively act to change the state of the Multi-Agent System (MAS).
 
-Un \textit{MAS}, è un sistema computazionale composto da più agenti autonomi che interagiscono tra loro per raggiungere obiettivi comuni o individuali. In un \textit{MAS}, ogni agente è un'entità autonoma, dotata di capacità di percezione, ragionamento, decisione e azione. Gli agenti in un \textit{MAS} possono operare in modo indipendente e, al contempo, collaborare tra loro per affrontare problemi complessi o raggiungere obiettivi che possono essere difficili o impossibili da raggiungere per un singolo agente.
+A MAS, or Multi-Agent System, is a computational system composed of multiple autonomous agents that interact with each other to achieve common or individual goals. In a MAS, each agent is an autonomous entity with perception, reasoning, decision-making, and action capabilities. Agents in a MAS can operate independently and, simultaneously, collaborate to address complex problems or achieve goals that may be difficult or impossible for a single agent to accomplish.
 
-Un aspetto cruciale è la situazionalità degli agenti, il che significa che le loro azioni dipendono dal contesto in cui si trovano. Gli agenti, interagendo tra loro e con l'ambiente circostante, diventano entità intrinsecamente sociali. Questa socialità emerge poiché l'autonomia ha senso solo quando un agente è immerso in una società di agenti, evidenziando l'assenza di agenti veramente autonomi in isolamento. L'interazione avviene attraverso lo scambio di conoscenza e informazioni, mentre la proattività degli agenti li spinge a cambiare lo stato del \textit{MAS}, influenzando altri agenti o l'ambiente. In questo contesto, gli agenti diventano componenti autonome, interattive e sociali che, mediante la loro capacità di autoregolamentazione, diventano fondamentali per la gestione dei sistemi complessi.
+A crucial aspect is the situational nature of agents, meaning their actions depend on the context in which they find themselves. Agents, by interacting with each other and the surrounding environment, become inherently social entities. This sociality emerges because autonomy makes sense only when an agent is immersed in a society of agents, highlighting the absence of truly autonomous agents in isolation. Interaction occurs through the exchange of knowledge and information, while the proactivity of agents drives them to change the state of the MAS, influencing other agents or the environment. In this context, agents become autonomous, interactive, and social components that, through their self-regulation capabilities, are essential for managing complex systems.
 
-\subsubsection{Il Framework Belief-Desire-Intention}
-Il \textit{framework BDI (Belief-Desire-Intention)} è ampiamente accettato come uno dei più popolari e riusciti nel campo della tecnologia degli agenti. Definito da Rao e Georgeff, il \textit{framework} si basa su tre concetti chiave: \textit{belief}, \textit{desire} e \textit{intention}. Gli agenti che seguono questo \textit{framework} sono comunemente denominati agenti \textit{BDI}.
-
-Di seguito vengono presentate le caratteristiche del \textit{framework}:
-
+\subsubsection{The Framework Belief-Desire-Intention}
+The Belief-Desire-Intention (BDI) framework is widely accepted as one of the most popular and successful frameworks in the field of agent technology. Defined by Rao and Georgeff, the framework is based on three key concepts: belief, desire, and intention. Agents that adhere to this framework are commonly referred to as BDI agents.
+The following are the characteristics of the framework:
 \begin{itemize}
-    \item \textit{belief}: Per prendere decisioni, gli agenti devono avere una rappresentazione del mondo in cui vivono. Le \textit{belief} sono la conoscenza dell'ambiente che gli agenti raccolgono e possono memorizzare come parte della loro \textit{belief base}.
-    \item \textit{desire}: I \textit{desire} rappresentano gli obiettivi principali del sistema. Gli agenti hanno a disposizione un insieme di piani che possono utilizzare per raggiungere i loro obiettivi, e la scelta del piano più adatto dipende dalla situazione corrente dell'agente e dell'ambiente.
-    \item \textit{intention}: Le \textit{intention} catturano la componente deliberativa del sistema. Rappresentano le azioni a cui l'agente si è impegnato a eseguire al fine di raggiungere i suoi obiettivi. Le \textit{intention} tengono traccia del progresso delle azioni e delle modifiche dell'ambiente durante l'esecuzione.
+    \item \textbf{Belief}: To make decisions, agents must have a representation of the world in which they exist. Beliefs are the knowledge about the environment that agents gather and can store as part of their belief base.
+    \item \textbf{Desire}: Desires represent the main goals of the system. Agents have a set of plans at their disposal that they can use to achieve their goals, and the choice of the most suitable plan depends on the current situation of the agent and the environment.
+    \item \textbf{Intention}: Intentions capture the deliberative component of the system. They represent the actions to which the agent has committed to executing to achieve its goals. Intentions keep track of the progress of actions and changes in the environment during execution.
 \end{itemize}
 
 \subsection{JaKtA}
-JaKtA\cite{10.1007/978-3-031-43264-4_4} è una libreria che fornisce la possibilità di sviluppare agenti che percepiscono e agiscono all'interno di un ambiente condiviso e comunicano tra di loro attraverso una forma di comunicazione basata su messaggi.
+JaKtA\cite{10.1007/978-3-031-43264-4_4} is a library that provides the capability to develop agents that perceive and act within a shared environment and communicate with each other through a message-based communication system.
 
-La libreria offre un \textit{framework} per costruire sistemi multi-agente composti da agenti conformi al modello \textit{BDI} e ispirati all'implementazione di Jason\cite{Bordini2005}. Un Sistema Multi-Agente è composto da due entità fondamentali:
+The library offers a framework for building multi-agent systems (MAS) composed of agents conforming to the Belief-Desire-Intention (BDI) model and inspired by the implementation of Jason\cite{Bordini2005}. A Multi-Agent System consists of two fundamental entities:
 
 \begin{itemize}
-    \item \textbf{Agenti}: l'agente è l'entità principale della libreria.
-    \item \textbf{Ambiente}: l'ambiente in cui gli agenti vivono.
+    \item \textbf{Agents}: Agents are the main entities of the library.
+    \item \textbf{Environment}: The environment in which agents live.
 \end{itemize}
 
-Gli agenti del \textit{MAS} osservano lo stato dell'ambiente durante la loro esecuzione e scelgono autonomamente di agire, in base alle informazioni che percepiscono. Le loro azioni possono influenzare lo stato dell'ambiente, il cambiamento sarà percepito da tutti gli altri agenti che operano su di esso. Gli agenti sono dotati di obiettivi che sono impegnati a raggiungere, contribuendo così al raggiungimento dell'obiettivo complessivo del Sistema Multi-Agente. Per quanto riguarda l'ambiente, un utente può:
+During their execution, agents in a MAS autonomously observe the environment's state and choose to act based on perceived information. Their actions can influence the state of the environment, and this change will be perceived by all other agents operating on it. Agents are equipped with goals that they are committed to achieving, contributing to the overall goal of the Multi-Agent System. As for the environment, a user can:
 
 \begin{itemize}
-    \item Creare un ambiente
-    \item Aggiungere funzionalità all'ambiente, come:
+    \item Create an environment.
+    \item Add functionalities to the environment, such as:
     \begin{itemize}
-        \item Definire le azioni che gli agenti all'interno dell'ambiente possono utilizzare.
-        \item Definire lo stato dell'ambiente, come l'insieme di informazioni che gli agenti possono percepire e eventualmente modificare.
+        \item Define the actions that agents within the environment can use.
+        \item Define the state of the environment, including the set of information that agents can perceive and potentially modify.
     \end{itemize}
-    \item Aggiungere e rimuovere agenti dall'ambiente
+    \item Add and remove agents from the environment.
 \end{itemize}
 
-Inoltre, gli agenti situati nello stesso ambiente possono comunicare tra di loro attraverso messaggi. I messaggi consentono agli agenti di condividere informazioni sul loro stato o condividere il completamento di un obiettivo, rendendo così il sistema Multi-Agente una vera società di agenti. Per quanto riguarda gli agenti, un utente può:
+Moreover, agents located in the same environment can communicate with each other through messages. Messages allow agents to share information about their state or share the completion of a goal, making the Multi-Agent System a true society of agents. Regarding agents, a user can:
 
 \begin{itemize}
-    \item Crearli e personalizzarne il comportamento, seguendo il modello \textit{BDI}.
-    \item Aggiungere azioni relative ad un agente.
-    \item Personalizzare il comportamento degli agenti durante la loro esecuzione.
+    \item Create and customize agents' behavior, following the BDI model.
+    \item Add actions related to an agent.
+    \item Customize the behavior of agents during their execution.
 \end{itemize}
 
-La libreria consente agli utenti di definire come verranno eseguiti i loro agenti \textit{BDI}. Ciò significa che gli stessi agenti possono essere eseguiti sia in un singolo \textit{thread} che tra più di essi, in modo quasi completamente trasparente. Per abilitare il \textit{MAS} a farlo, gli utenti devono definire il suo modello di esecuzione, ovvero come vengono eseguiti i suoi agenti.
+The library enables users to define how their BDI agents will be executed. This means that the same agents can be executed either in a single thread or among multiple threads, in a nearly transparent manner. To enable the MAS to do this, users must define its execution model, i.e., how its agents are executed.
 
-\subsection{Middleware per la Comunicazione tra Agenti Distribuiti}
+\subsection{Middleware for Communication among Distributed Agents}
 
-L'implementazione attuale di JaKtA si concentra sulla gestione dei sistemi multi-agente in locale, limitando la considerazione degli agenti distribuiti in rete. Per affrontare questa limitazione e consentire una comunicazione efficace tra agenti distribuiti, si propone l'introduzione di un \textit{middleware} dedicato.
-
-Un \textit{middleware} per la comunicazione tra agenti distribuiti agirebbe come un livello intermedio tra gli agenti stessi e la rete, fornendo un'astrazione che rende trasparenti al programmatore le complessità della comunicazione distribuita. Il \textit{middleware} avrebbe lo scopo di gestire l'invio e la ricezione di messaggi tra agenti situati su macchine diverse, garantendo la coerenza delle informazioni.
-
-Il \textit{middleware} si occuperebbe di stabilire e mantenere le connessioni tra gli agenti distribuiti. Questo includerebbe la gestione dei protocolli di comunicazione, delle connessioni perse e di eventuali ritardi o errori di trasmissione.
-
-L'implementazione di un \textit{middleware} per la comunicazione tra agenti distribuiti arricchirebbe la capacità di JaKtA di supportare scenari in cui gli agenti operano su reti eterogenee o geograficamente distanti. Ciò consentirebbe la creazione di sistemi multi-agente che possono collaborare e coordinare le loro azioni su scala più ampia, aprendo nuove possibilità di applicazione per la libreria JaKtA.
+The current implementation of JaKtA focuses on managing multi-agent systems locally, limiting consideration to agents distributed over a network. To address this limitation and enable effective communication among distributed agents, the introduction of a dedicated middleware is proposed.
+A middleware for communication among distributed agents would act as an intermediate layer between the agents themselves and the network, providing an abstraction that makes the complexities of distributed communication transparent to the programmer. The middleware aims to handle the sending and receiving of messages between agents located on different machines, ensuring information consistency.
+The middleware would be responsible for establishing and maintaining connections between distributed agents. This includes managing communication protocols, handling lost connections, and addressing any delays or transmission errors.
+Implementing middleware for communication among distributed agents would enhance JaKtA's ability to support scenarios where agents operate on heterogeneous or geographically distant networks. This would allow the creation of multi-agent systems that can collaborate and coordinate their actions on a larger scale, opening up new application possibilities for the JaKtA library.
