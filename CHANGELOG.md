@@ -1,3 +1,29 @@
+## [1.16.0](https://github.com/angelacorte/ise-report/compare/1.15.0...1.16.0) (2024-01-14)
+
+
+### Features
+
+* add explanation on agent topics ([2a3cefa](https://github.com/angelacorte/ise-report/commit/2a3cefade1382a7df6532b5dcee4e4e803f23acb))
+
+
+### Bug Fixes
+
+* add note on interaction ([95add5d](https://github.com/angelacorte/ise-report/commit/95add5d885e07532f75d08140e31a2b47dd7616d))
+* fix title in english ([98f4b63](https://github.com/angelacorte/ise-report/commit/98f4b63222418e67c722ddef0fb52b265f781812))
+* fix typo ([401cbec](https://github.com/angelacorte/ise-report/commit/401cbec112c65ceb2e17fc46bccafc998999630c))
+* fix typo ([210edce](https://github.com/angelacorte/ise-report/commit/210edced037377f7afe2c9fe430d6e60c94655b0))
+* translated in english ([8229d63](https://github.com/angelacorte/ise-report/commit/8229d632010b276364a4d6a6ef1e15014f3c36be))
+
+
+### Build and continuous integration
+
+* fix release job ([875b018](https://github.com/angelacorte/ise-report/commit/875b018b49423732a5a75081be2597b40306cf61))
+
+
+### Refactoring
+
+* switch to english configuration ([a3a7e1a](https://github.com/angelacorte/ise-report/commit/a3a7e1a66152083b9cf40a5f1566a99f56e9348f))
+
 ## [1.15.0](https://github.com/angelacorte/ise-report/compare/1.14.0...1.15.0) (2024-01-12)
 
 
