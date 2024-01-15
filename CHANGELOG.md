@@ -1,3 +1,18 @@
+## [1.17.1](https://github.com/angelacorte/ise-report/compare/1.17.0...1.17.1) (2024-01-15)
+
+
+### Documentation
+
+* add broker behavior in "detailed design" ([1fcbecf](https://github.com/angelacorte/ise-report/commit/1fcbecf65d80394c0f6fc7702bd4e0d5639d8091))
+* add section in chapter "introduction" ([26b40f9](https://github.com/angelacorte/ise-report/commit/26b40f939e9be48a370ea27e8bcb62a70c6eda43))
+* add subsection "Environment in JaKtA" ([0758424](https://github.com/angelacorte/ise-report/commit/0758424d6411a95fdaf8ba9217641dc27bc616a5))
+
+
+### Refactoring
+
+* restructure "Agent Life Cycle in JaKtA ([8e5b016](https://github.com/angelacorte/ise-report/commit/8e5b0168d94eadac0746c8d1b22999a68c73148b))
+* switch introduction to english ([f669066](https://github.com/angelacorte/ise-report/commit/f6690660d632bb46301b1ec7986e0fb91bee9dcc))
+
 ## [1.17.0](https://github.com/angelacorte/ise-report/compare/1.16.0...1.17.0) (2024-01-15)
 
 
