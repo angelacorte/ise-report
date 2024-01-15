@@ -100,15 +100,17 @@ In questa sezione si vuole fare chiarezza su alcune scelte implementative che po
 \subsubsection{RemoteService}
 Il \texttt{RemoteService} funge da rappresentazione di un agente remoto, cioè un agente che appartiene ad un \texttt{Dmas} diverso da quello corrente, ma raggiungibile attraverso la rete.
 Esso è identificato dal suo nome e viene specificato in fase di creazione del \texttt{Dmas}. È importante notare che, al momento, non è stato implementato un meccanismo che renda
-univoci i nomi dei \texttt{RemoteService} per tutti i \texttt{Dmas}, quindi è possibile che due \texttt{Dmas} diversi abbiano un \texttt{RemoteService} con lo stesso nome, causando possibili duplicazioni dei
-messaggi intesi invece per un singolo destinatario.
+univoci i nomi dei \texttt{RemoteService} per tutti i \texttt{Dmas}, quindi è possibile che due \texttt{Dmas} diversi abbiano un \texttt{RemoteService} con lo stesso nome.
 
 È stata valutata l'opzione di prefiggere al nome del \texttt{RemoteService} un codice univoco, tuttavia, siccome nel corrente design il \texttt{RemoteService} viene specificato in fase di creazione
 del \texttt{Dmas}, non è possibile conoscere a priori il codice univoco da utilizzare. C'è inoltre il riscio che due \texttt{Dmas} diversi, essendo in processi separati, generino lo stesso codice
 prefisso.
 
+Dunque, come soluzione temporanea, è stato implementato un meccanismo di controllo a livello del broker che impedisce che due \texttt{Dmas} diversi pubblichino messaggi su un topic (corrispondente al remote service) con lo stesso nome.
+Le note di design relative a questo meccanismo sono presenti nella sezione: \ref{sec:publishers-same-name}.
+
 \subsubsection{Nomi riservati}
-Esistono due nomi di \texttt{RemoteService} da ritenersi riservati: \texttt{broker} e \texttt{broadcast}. Il primo è il nome del \texttt{RemoteService} del Broker, mentre il secondo è utilizzato 
+Esistono due nomi di \texttt{RemoteService} da ritenersi riservati: \texttt{broker} e \texttt{broadcast}. Il primo è il nome del \texttt{RemoteService} del Broker, mentre il secondo è utilizzato
 per effettuare broadcasting dei messaggi.
 
 Attualmente non è in funzione alcun meccanismo che impedisca un programmatore di chiamare un agente del proprio \texttt{Dmas} con i nomi sopra citati, tuttavia, farlo potrebbe causare comportamenti

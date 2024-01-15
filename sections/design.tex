@@ -80,32 +80,32 @@ However, this solution presents some technical problems:
 
 \paragraph{Sharing messages}: in this case, different multi-agent systems have different environments and agents, but the agents of a system can send messages to the agents of another system, both in a one-to-one fashion and in a one-to-many fashion.
 This solution embodies the idea of "do not communicate by sharing memory; instead, share memory by communicating" and is a technically easier solution to implement than the previous one, since it does not require a robust management of data consistency between the various systems.
-Also, it could be more flexible regarding programmer needs, since it allows for the creation of multiple environments, and the programmer can decide which messages to share between the various systems.
-
-In the context of multi-agent systems, every agent is associated with a unique \textit{topic}.
-To enable an effective communication, it is necessary for two agents to know each other's \textit{topic} in advance.
-This association enables targeted and organized communication, aiming for agents to focus solely on information relevant to their scope,
-thereby facilitating the coordination of activities in the system.
+Also, it could be more flexible regarding programmer needs since it allows for the creation of multiple environments, and the programmer can decide which messages to share between the various systems.
 
 However, this solution is somewhat limited in some respects:
 \begin{itemize}
-    \item the only way to share data between the various systems is through communication, so the programmer need to instruct the agents to send messages to agents in the other systems;
-    \item since the environments are not shared, the programmer needs to take care of the consistency of the data between the various systems;
-    \item again, not sharing the environments means that the programmer needs to design multiple distributed Mas', as opposed to the previous solution.
+    \item The only way to share data between the various systems is through communication, so the programmer needs to instruct the agents to send messages to agents in the other systems;
+    \item Since the environments are not shared, the programmer needs to take care of the consistency of the data between the various systems;
+    \item Again, not sharing the environments means that the programmer needs to design multiple distributed Mas', as opposed to the previous solution.
 \end{itemize}
 
-In summary, this solution removes some complexity from the distributed infrastructure design, but puts some on the programmer's shoulders.\\
+In summary, this solution removes some complexity from the distributed infrastructure design but puts some on the programmer's shoulders.
+Regardless, after some discussion, taking into account the project's scope and technical difficulties, the team decided to implement the second solution, valuing its simplicity and flexibility.\\
 
-Regardless, after some discussion, taking into account the project's scope and technical difficulties, the team decided to implement the second solution, valuing its simplicity and flexibility.
-So the proposed solution consists in the implementation of an alternative version of the \texttt{Mas} interface, called \texttt{Dmas}, to be used in distributed contexts.
-This extension should behave like a \texttt{Mas}, but in addition should be able to communicate with other \texttt{Dmas} through the network.
+So the proposed solution consists of the implementation of an alternative version of the \texttt{Mas} interface, called \texttt{Dmas}, to be used in distributed contexts.
+This extension should behave like a \texttt{Mas}, but in addition, should be able to communicate with other \texttt{Dmas} through the network.
+The communication model chosen is the \textit{publish-subscribe} model, which allows for a simple and effective communication between the various \texttt{Dmas}.
+In this context, every agent is associated with a unique \textit{topic}, so
+to enable an effective communication, it is necessary for two agents to know each other's \textit{topic} in advance.
+This association enables targeted and organized communication, aiming for agents to focus solely on information relevant to their scope,
+thereby facilitating the coordination of activities in the whole system.
 
 \subsubsection{Adapter}
 This module defines the concepts of:
 
 \begin{itemize}
     \item \textbf{Dmas}: represents a distributed multi-agent system, i.e. a system that can communicate with other \texttt{Dmas} through the network;
-    \item \textbf{Network}: incapsulates the logic for the communication between \texttt{Dmas};
+    \item \textbf{Network}: encapsulates the logic for the communication between \texttt{Dmas};
     \item \textbf{RemoteService}: represents a remote agent, i.e. an agent that belongs to a \texttt{Dmas} different from the current one, but reachable through the network.
 \end{itemize}
 
@@ -147,7 +147,7 @@ The behavior of the various components of the system can be described through th
 
 These activities are showcased in the figure \ref{fig:initialization}.
 
-\begin{figure}
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/activity-dmas.png}
     \caption{System initialization}
@@ -157,14 +157,16 @@ These activities are showcased in the figure \ref{fig:initialization}.
 \subsubsection{Dmas execution cycle}
 
 \begin{enumerate}
-    \item the \texttt{Dmas} collects all the external events received from the \texttt{Network}, i.e. the messages published by the \texttt{RemoteService}s to which it has subscribed and the eventual disconnection notifications of a \texttt{RemoteService}, in the form of \texttt{EnvironmentChange};
+    \item the \texttt{Dmas} collects all the external events received from the \texttt{Network},
+          i.e. the messages published by the \texttt{RemoteService}s to which it has subscribed and the eventual disconnection notifications of a \texttt{RemoteService},
+          in the form of \texttt{EnvironmentChange};
     \item external events are concatenated to the queue of internal EnvironmentChanges of the Dmas;
     \item one by one, the \texttt{EnvironmentChange}s are processed by the \texttt{Dmas}. In case the event consists of sending a message to a \texttt{RemoteService} or a \textit{broadcast}, the message is sent to the \texttt{Network}, which will forward it to the \textit{broker};
 \end{enumerate}
 
 These activities are showcased in the figure \ref{fig:execution}.
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/activity-applychanges.png}
     \caption{Dmas execution cycle}
@@ -200,6 +202,24 @@ The \textit{broker}, which assumes the role of server, is responsible for managi
 \end{figure}
 
 The behavior of \textit{client} and \textit{broker} in situations of \textit{broadcast} and sending of messages with a single recipient is illustrated in figures \ref{fig:interaction-broadcast} and \ref{fig:interaction-sendmessage}.
+
+\subsubsection{Publishers with the same name} \label{sec:publishers-same-name}
+
+From the point of view of the Dmas, the interaction in the case of a \textit{sendmessage} is comprised of the following steps:
+\begin{itemize}
+    \item when an agent in the Dmas sends a message to an agent outside of it, the Dmas sends a message to the \textit{broker} via his \textit{Client} containing the message to be sent and the \textit{topic} of the recipient;
+    \item the broker checks whether or not the publisher's name is valid;
+    \item if the check ended with a success, the message is forwarded, otherwise the broker closes the connection with the client;
+\end{itemize}
+
+this interaction is illustrated in figure \ref{fig:interaction-sendmessage-pov}.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/interaction-sendmessage-pov.png}
+    \caption{Sequence diagram of the interaction between \texttt{Dmas}, his \textit{client} and \textit{broker} in case of sending a message to a single recipient}
+    \label{fig:interaction-sendmessage-pov}
+\end{figure}
 
 
 \subsubsection{Disconnection management}

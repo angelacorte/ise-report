@@ -1,0 +1,28 @@
+@startuml
+participant Mas1 as M1
+
+participant Client1 as C1
+
+participant Broker as CB
+ 
+activate M1
+
+activate C1
+
+activate CB
+ 
+M1 --> C1 : send(message, Mas2.service1)
+
+C1 --> CB : publish(message.from, message)
+
+CB --> CB : checkPublisher
+
+alt success
+    activate Mas2
+    CB --> Mas2 : SendMessage
+else There already is a publisher with the same name
+    CB --> C1 : CloseChannel
+    C1 --> M1 !!: NonUniquePublisher
+end
+ 
+@enduml
