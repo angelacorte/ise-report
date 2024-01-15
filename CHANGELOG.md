@@ -1,3 +1,10 @@
+## [1.17.0](https://github.com/angelacorte/ise-report/compare/1.16.0...1.17.0) (2024-01-15)
+
+
+### Features
+
+* add name duplication check notes ([4d49549](https://github.com/angelacorte/ise-report/commit/4d49549a1bddf12d844cfaa81834f39af6ca61eb))
+
 ## [1.16.0](https://github.com/angelacorte/ise-report/compare/1.15.0...1.16.0) (2024-01-14)
 
 
