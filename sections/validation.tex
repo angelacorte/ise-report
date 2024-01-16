@@ -1,23 +1,23 @@
-\section{Validazione del Sistema}
-Per testare i moduli software sviluppati è stato utilizzato il framework di testing JUnit in combinazione con il test engine di Ktor.
+\section{System Validation}
+The JUnit testing framework in combination with the Ktor test engine was used to test the developed software modules.
 
-Ktor fornisce un \textit{test engine} speciale che non crea un \textit{server web}, non si collega alle \textit{socket} e non effettua alcuna richiesta \textit{HTTP}. Invece, si collega direttamente ai meccanismi interni ed elabora direttamente una chiamata dell'applicazione. Ciò si traduce in una esecuzione più veloce dei test rispetto all'avvio di un \textit{server web} completo.
+Ktor provides a special \textit{test engine} that does not create a \textit{web server}, does not connect to the \textit{sockets}, and does not make any \textit{HTTP} requests. Instead, it connects directly to the internal mechanisms and directly processes an application call. This results in faster test execution than starting a full \textit{webserver}.
 
-Nel Listato \ref{lst:BrokerBehaviorSpec} viene presentata la classe di test \texttt{BrokerBehaviorSpec}, che testa il comportamento del \textit{broker}.
+The Listing \ref{lst:BrokerBehaviorSpec} presents the test class \texttt{BrokerBehaviorSpec}, which tests the behavior of the \textit{broker}.
 
-Il test crea due \textit{client} simulati, \texttt{fooMas} e \texttt{barMas}, che vengono configurati per supportare la serializzazione \textit{JSON} e le \textit{WebSocket}. Successivamente, vengono stabiliti \textit{topic} (\texttt{fooTopic} e \texttt{barTopic}) e un messaggio di test (\texttt{message}). Vengono quindi create sessioni \textit{WebSocket} per le operazioni di sottoscrizione e pubblicazione tra i due \textit{client}.
+The test creates two simulated \textit{client}, \textit{fooMas} and \textit{barMas}, which are configured to support \textit{JSON} serialization and \textit{WebSockets}. Next, \textit{topic} (\texttt{fooTopic} and \texttt{barTopic}) and a test message (\texttt{message}) are established. Sessions are then created \textit{WebSocket} for subscription and publishing operations between the two \textit{clients}.
 
-Il test verifica il seguente comportamento:
+The test verifies the following behavior:
 
 \begin{itemize}
-    \item Ottiene la lista dei \textit{topic} disponibili attraverso una richiesta \textit{HTTP GET}.
-    \item Verifica che i \textit{topic} ottenuti corrispondano a quelli precedentemente stabiliti (\texttt{fooTopic} e \texttt{barTopic}).
-    \item Invia un messaggio da \texttt{fooMas} a \texttt{barTopic} attraverso una sessione di sottoscrizione, verificando l'errore \texttt{BAD\_REQUEST} in risposta.
-    \item Invia un messaggio da \texttt{fooMas} a \texttt{fooTopic} attraverso una sessione di pubblicazione e verifica che \texttt{barSubscribeSession} riceva il messaggio.
-    \item Invia un messaggio da \texttt{barMas} a \texttt{barTopic} attraverso una sessione di pubblicazione e verifica che \texttt{fooSubscribeSession} riceva il messaggio.
+    \item Obtains the list of available \textit{topic} through a \textit{HTTP GET} request.
+    \item Verifies that the obtained \textit{topic} matches the previously established \texttt{fooTopic} and \texttt{barTopic}).
+    \item Send a message from \texttt{fooMas} to \texttt{barTopic} through a subscription session, checking the error \texttt{BAD\_REQUEST} in response.
+    \item Send a message from \texttt{fooMas} to \texttt{fooTopic} through a publish session and verify that \texttt{barSubscribeSession} receives the message.
+    \item Send a message from \texttt{barMas} to \texttt{barTopic} through a publishing session and verify that \texttt{fooSubscribeSession} receives the message.
 \end{itemize}
 
-\begin{lstlisting}[caption={Classe di test \texttt{BrokerBehaviorSpec}.}, label={lst:BrokerBehaviorSpec}, language=Kotlin]
+\begin{lstlisting}[caption={Test class \texttt{BrokerBehaviorSpec}.}, label={lst:BrokerBehaviorSpec}, language=Kotlin]
     testApplication {
         val fooMas = createClient {
             install(ContentNegotiation) {

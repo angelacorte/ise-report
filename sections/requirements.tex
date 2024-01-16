@@ -1,4 +1,4 @@
-\section{Analisi dei Requisiti}
+\section{Requirements Analysis}
 
 % Is there any implicit requirement hidden within this project's requirements?
 %
@@ -10,62 +10,62 @@
 %
 % What's the abstraction gap among the available models / paradigms / technologies and the problem to be solved?
 
-\subsection{Obiettivi}
+\subsection{Goals}
 
-Il goal principale del progetto è quello di estendere la libreria JaKtA per permettere la costruzione di sistemi multi-agente distribuiti in rete evitando all'utilizzatore della libreria di gestire le complessità delle comunicazioni di rete.
+The main goal of the project is to extend the JaKtA library to allow the construction of distributed multi-agent systems
+over a network while avoiding the library user from having to deal with the complexities of network communications.
 
-\subsection{Requisiti}
-Sulla base dell'obiettivo principale del progetto, sono stati individuati i seguenti requisiti funzionali, non funzionali e di implementazione.
+\subsection{Requirements}
+Based on the main objective of the project, the following functional, non-functional and implementation requirements were identified.
 
-\subsubsection{Requisiti Funzionali}
-I requisiti funzionali delineano le funzioni specifiche del sistema, cioè cosa il sistema deve fare:
+\subsubsection{Functional Requirements}
+Functional requirements outline the specific functions of the system, that is, what the system is to do:
 
 \begin{enumerate}
-      \item Gestione della distribuzione degli agenti:
-            \begin{enumerate}
-                  \item  Il \textit{middleware} deve supportare la distribuzione degli agenti su macchine eterogenee,
-                        consentendo la loro esecuzione coordinata su diverse posizioni geografiche.
-            \end{enumerate}
+      \item Managing the distribution of agents:
+      \begin{enumerate}
+            \item The \textit{middleware} must support the distribution of agents across heterogeneous machines,
+            enabling their coordinated execution on different geographical locations.
+      \end{enumerate}
 
-      \item Implementazione di un meccanismo di \textit{dispatch} dei messaggi tra i vari agenti:
+      \item Implementation of a mechanism to \textit{dispatch} messages between agents:
+      \begin{enumerate}
+            \item The \textit{middleware} must exploit a \textit{broker} for network communication:
             \begin{enumerate}
-                  \item Il \textit{middleware} deve sfruttare un \textit{broker} per la comunicazione in rete:
-                        \begin{enumerate}
-                              \item Il \textit{broker} deve consentire l'aggiunta di \textit{publisher} associati a un determinato \textit{topic}.
-                              \item Il \textit{broker} deve permettere la rimozione di \textit{publisher} associati a un \textit{topic} specifico.
-                              \item Il \textit{broker} deve supportare l'aggiunta di \textit{subscriber} associati a un determinato \textit{topic}.
-                              \item Il \textit{broker} deve permettere la rimozione di \textit{subscriber} associati a un \textit{topic} specifico.
-                              \item Il broker deve fornire l'elenco di tutti i topic disponibili.
-                        \end{enumerate}
-                  \item Il \textit{middleware} deve incorporare un \textit{client} che si interfacci con il \textit{broker}:
-                        \begin{enumerate}
-                              \item Il \textit{client} deve fornire la funzionalità di pubblicazione di un messaggio su un determinato \textit{topic}.
-                              \item Il client deve offrire la possibilità di effettuare la sottoscrizione a un \textit{topic} specifico.
-                              \item Il sistema deve consentire al \textit{client} di effettuare una trasmissione \textit{broadcast}, inviando un messaggio a tutti gli altri \textit{client} connessi.
-                              \item  Il \textit{client} deve essere in grado di stabilire e gestire connessioni \textit{WebSocket} verso un \textit{broker} specificato tramite indirizzo \textit{IP} e porta.
-                        \end{enumerate}
+                  \item The \textit{broker} must allow the addition of \textit{publisher} associated with a given \textit{topic}.
+                  \item The \textit{broker} must allow the removal of \textit{publisher} associated with a specific \textit{topic}.
+                  \item The \textit{broker} must support the addition of \textit{subscriber} associated with a specific \textit{topic}.
+                  \item The \textit{broker} must allow the removal of \textit{subscriber} associated with a specific \textit{topic}.
+                  \item The broker must provide a list of all available topics.
             \end{enumerate}
-      \item  Comunicazione Distribuita e Coordinazione:
+            \item The \textit{middleware} must incorporate a \textit{client} that interfaces with the \textit{broker}:
             \begin{enumerate}
-                  \item  Il \textit{middleware} deve gestire la comunicazione distribuita tra agenti, permettendo lo scambio di messaggi e la coordinazione delle attività.
-                  \item Deve supportare la sincronizzazione degli agenti distribuiti per garantire un'interazione coesa e coordinata.
+                  \item The \textit{client} must provide the functionality of posting a message on a given \textit{topic}.
+                  \item The client must provide the ability to subscribe to a specific \textit{topic}.
+                  \item The system must allow the \textit{client} to perform a broadcast \textit{broadcast}, sending a message to all other connected \textit{clients}.
+                  \item The \textit{client} must be able to establish and manage \textit{WebSocket} connections to a \textit{broker} specified by \textit{IP} address and port.
             \end{enumerate}
+      \end{enumerate}
+      \item Distributed Communication and Coordination:
+      \begin{enumerate}
+            \item The \textit{middleware} must handle distributed communication between agents, enabling message exchange and coordination of activities.
+            \item It must support synchronization of distributed agents to ensure cohesive and coordinated interaction.
+      \end{enumerate}
+\end{enumerate}
+\subsection{Non-Functional Requirements}
+Nonfunctional requirements define quality attributes, constraints, and general properties of the system:
+
+\begin{enumerate}
+      \item The \textit{middleware} must be implemented in separate modules so that it can be easily maintained and extended.
+      \item The \textit{middleware} must be designed to scale horizontally, easily supporting the addition of new nodes without degrading performance.
 \end{enumerate}
 
-\subsubsection{Requisiti non Funzionali}
-I requisiti non funzionali definiscono attributi di qualità, vincoli e proprietà generali del sistema:
+\subsection{Implementation Requirements}
+Implementation requirements concern the technological and methodological aspects of system implementation:
 
 \begin{enumerate}
-      \item Il \textit{middleware} deve essere realizzato in moduli separati, in modo da poter essere facilmente manutenibile ed estendibile.
-      \item  Il \textit{middleware} deve essere progettato per scalare orizzontalmente, supportando facilmente l'aggiunta di nuovi nodi senza degradare le prestazioni.
-\end{enumerate}
-
-\subsubsection{Requisiti di Implementazione}
-I requisiti di implementazione riguardano gli aspetti tecnologici e metodologici dell'implementazione del sistema:
-
-\begin{enumerate}
-      \item  Il progetto deve essere implementato utilizzando il linguaggio di programmazione Kotlin per garantire coerenza e compatibilità con la libreria JaKtA.
-      \item Utilizzare il \textit{framework} Ktor per implementare il \textit{middleware} per l'interazione tra sistemi multi-agente distribuiti.
+      \item The project must be implemented using the Kotlin programming language to ensure consistency and compatibility with the JaKtA library.
+      \item Use the Ktor \textit{framework} to implement the \textit{middleware} for interaction between distributed multi-agent systems.
 \end{enumerate}
 
 % \subsubsection{Requisiti non funzionali}
