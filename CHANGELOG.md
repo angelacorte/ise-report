@@ -1,3 +1,11 @@
+## [1.17.2](https://github.com/angelacorte/ise-report/compare/1.17.1...1.17.2) (2024-01-16)
+
+
+### Bug Fixes
+
+* fix typo ([67cedcd](https://github.com/angelacorte/ise-report/commit/67cedcdabb77d039db484f8dc5339d472d63eacc))
+* traslated into english ([517ce21](https://github.com/angelacorte/ise-report/commit/517ce2182447cc51999c1451a3c68e0558e3265a))
+
 ## [1.17.1](https://github.com/angelacorte/ise-report/compare/1.17.0...1.17.1) (2024-01-15)
 
 
