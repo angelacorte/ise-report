@@ -50,6 +50,8 @@ Functional requirements outline the specific functions of the system, that is, w
       \begin{enumerate}
             \item The \textit{middleware} must handle distributed communication between agents, enabling message exchange and coordination of activities.
             \item It must support synchronization of distributed agents to ensure cohesive and coordinated interaction.
+            \item It needs to manage disconnections and reconnections of agents, ensuring that the system remains consistent.
+            \item It needs to manage the disconnection of the broker, ensuring that the system remains consistent.
       \end{enumerate}
 \end{enumerate}
 \subsection{Non-Functional Requirements}
@@ -67,11 +69,3 @@ Implementation requirements concern the technological and methodological aspects
       \item The project must be implemented using the Kotlin programming language to ensure consistency and compatibility with the JaKtA library.
       \item Use the Ktor \textit{framework} to implement the \textit{middleware} for interaction between distributed multi-agent systems.
 \end{enumerate}
-
-% \subsubsection{Requisiti non funzionali}
-
-% \begin{enumerate}
-%     \item  Il sistema deve essere scalabile, consentendo l'aggiunta di nuovi client e broker senza compromettere le prestazioni generali del sistema.
-%     \item
-%     \item
-% \end{enumerate}
