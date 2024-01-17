@@ -101,7 +101,7 @@ This mechanism is critical to ensure effective two-way communication between the
 \subsection{Implementation Notes}
 This section seeks to shed light on some implementation choices that may be considered suboptimal, which were made for reasons of time and/or complexity.
 
-\subsection{RemoteService}
+\subsubsection{RemoteService}
 The \texttt{RemoteService} serves as a representation of a remote agent, i.e., an agent that belongs to a different \texttt{Dmas} than the current one, but can be reached through the network.
 It is identified by its name and is specified when creating the \texttt{Dmas}. It is important to note that, at present, no mechanism has been implemented to make
 unique \texttt{RemoteService} names for all \texttt{Dmas}, so it is possible for two different \texttt{Dmas} to have a \texttt{RemoteService} with the same name.
