@@ -1,3 +1,15 @@
+## [1.18.0](https://github.com/angelacorte/ise-report/compare/1.17.2...1.18.0) (2024-01-17)
+
+
+### Features
+
+* add requirements ([67d9435](https://github.com/angelacorte/ise-report/commit/67d94359559150a95838553fb3e7966bcd690de9))
+
+
+### Refactoring
+
+* switch front to english language ([a84ffe2](https://github.com/angelacorte/ise-report/commit/a84ffe265c33167e0bfeb0b61b1762b2a1e5fb57))
+
 ## [1.17.2](https://github.com/angelacorte/ise-report/compare/1.17.1...1.17.2) (2024-01-16)
 
 
