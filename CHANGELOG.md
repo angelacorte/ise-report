@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/angelacorte/ise-report/compare/1.18.0...1.18.1) (2024-01-17)
+
+
+### Bug Fixes
+
+* fix subsection number ([e3c5b1a](https://github.com/angelacorte/ise-report/commit/e3c5b1a6de881d619dee51e851fb223cd281b419))
+
 ## [1.18.0](https://github.com/angelacorte/ise-report/compare/1.17.2...1.18.0) (2024-01-17)
 
 
